@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>PropConnect - Landlord Drawer</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Material Icons -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Tailwind Config -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "primary-dark": "#0f65bd",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1a2632",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 overflow-hidden h-screen w-full flex">
+    <!-- Mock Sidebar (Background Context) -->
+    <aside
+        class="w-64 h-full bg-surface-light dark:bg-surface-dark border-r border-slate-200 dark:border-slate-800 hidden lg:flex flex-col shrink-0 z-0">
+        <div class="h-16 flex items-center px-6 border-b border-slate-200 dark:border-slate-800">
+            <div class="flex items-center gap-2 text-primary font-bold text-xl">
+                <span class="material-symbols-outlined filled">apartment</span>
+                PropConnect
+            </div>
+        </div>
+        <nav class="flex-1 p-4 space-y-2">
+            <div
+                class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg cursor-pointer">
+                <span class="material-symbols-outlined">dashboard</span>
+                Dashboard
+            </div>
+            <div
+                class="flex items-center gap-3 px-4 py-3 bg-primary/10 text-primary font-bold rounded-lg cursor-pointer">
+                <span class="material-symbols-outlined fill-1">person</span>
+                Landlords
+            </div>
+            <div
+                class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg cursor-pointer">
+                <span class="material-symbols-outlined">home_work</span>
+                Properties
+            </div>
+            <div
+                class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg cursor-pointer">
+                <span class="material-symbols-outlined">group</span>
+                Tenants
+            </div>
+        </nav>
+    </aside>
+    <!-- Mock Main Content (Background Context) -->
+    <main class="flex-1 flex flex-col h-full opacity-30 pointer-events-none lg:opacity-100 relative z-0">
+        <header
+            class="h-16 bg-surface-light dark:bg-surface-dark border-b border-slate-200 dark:border-slate-800 flex items-center justify-between px-8">
+            <h1 class="text-xl font-bold">Landlords Directory</h1>
+            <div class="flex gap-4">
+                <button class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-bold shadow-sm">Add New
+                    Landlord</button>
+            </div>
+        </header>
+        <div class="p-8">
+            <!-- Mock Table Header -->
+            <div
+                class="bg-surface-light dark:bg-surface-dark rounded-t-xl border border-slate-200 dark:border-slate-800 p-4 grid grid-cols-12 gap-4 font-bold text-sm text-slate-500">
+                <div class="col-span-4">Name</div>
+                <div class="col-span-3">Contact</div>
+                <div class="col-span-2">Properties</div>
+                <div class="col-span-2">Status</div>
+                <div class="col-span-1"></div>
+            </div>
+            <!-- Mock Table Rows -->
+            <div
+                class="space-y-[1px] bg-slate-200 dark:bg-slate-800 border-x border-b border-slate-200 dark:border-slate-800 rounded-b-xl overflow-hidden">
+                <div class="bg-white dark:bg-surface-dark p-4 grid grid-cols-12 gap-4 items-center">
+                    <div class="col-span-4 flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-slate-200"></div>
+                        <span class="font-medium">Sarah Jenkins</span>
+                    </div>
+                    <div class="col-span-3 text-sm text-slate-500">sarah@example.com</div>
+                    <div class="col-span-2 text-sm">4 Units</div>
+                    <div class="col-span-2"><span
+                            class="px-2 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold">Active</span>
+                    </div>
+                    <div class="col-span-1 text-right text-slate-400">...</div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- OVERLAY & DRAWER CONTAINER -->
+    <div class="fixed inset-0 z-50 flex justify-end">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm transition-opacity"></div>
+        <!-- DRAWER -->
+        <div
+            class="relative w-full max-w-[640px] h-full bg-surface-light dark:bg-surface-dark shadow-2xl flex flex-col animate-in slide-in-from-right duration-300">
+            <!-- Sticky Header -->
+            <header
+                class="flex items-center justify-between px-6 py-4 border-b border-slate-200 dark:border-slate-800 bg-surface-light dark:bg-surface-dark z-10 shrink-0">
+                <div class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-slate-400">person</span>
+                    <h2 class="text-lg font-bold text-slate-900 dark:text-white">Landlord Details</h2>
+                </div>
+                <button
+                    class="p-2 text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </header>
+            <!-- Scrollable Content -->
+            <div class="flex-1 overflow-y-auto custom-scrollbar">
+                <!-- Profile Section -->
+                <div class="px-6 pt-8 pb-6">
+                    <div class="flex flex-col sm:flex-row gap-6 items-start">
+                        <div class="relative">
+                            <div class="w-24 h-24 rounded-full bg-cover bg-center border-4 border-slate-50 dark:border-slate-800 shadow-sm"
+                                data-alt="Portrait of Ahmed Al-Fayed"
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDOVQiQTOp3wCn6rPKNyQp6-7tD1R6WZEsdre6cd0WsLTww95VdWqSccQfCva0PPdhVqEiUDdKZ7Aso5_1J6-fPCim4p-Rs-glGC44bfXICKXW8r1GN75Q5eBVu3hIfg1Uv33zZmjorpkglD9kyq87edATEpC-HveLwltwLefzyvOTR8vpfQ1uAttJA_st8luA8PqE-DcVLiIOF1usl1VVhJ9dQ8Fe9ZoeVWfxj69yiAqcgnk1QzOcS5JeqlHrxgm6pcQYGqlcujPEl');">
+                            </div>
+                            <div
+                                class="absolute bottom-0 right-0 w-6 h-6 bg-green-500 border-2 border-white dark:border-slate-800 rounded-full flex items-center justify-center">
+                                <span class="material-symbols-outlined text-white text-[14px] font-bold">check</span>
+                            </div>
+                        </div>
+                        <div class="flex-1 w-full">
+                            <div class="flex justify-between items-start mb-1">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-slate-900 dark:text-white leading-tight">Ahmed
+                                        Al-Fayed</h3>
+                                    <div
+                                        class="flex items-center gap-2 mt-1 text-sm text-slate-500 dark:text-slate-400">
+                                        <span>ID: #LL-8921</span>
+                                        <span class="w-1 h-1 rounded-full bg-slate-300"></span>
+                                        <span
+                                            class="flex items-center gap-1 text-amber-600 font-bold text-xs bg-amber-50 px-2 py-0.5 rounded-full border border-amber-100">
+                                            <span class="material-symbols-outlined text-[14px]">star</span> VIP
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="flex gap-2">
+                                    <button
+                                        class="flex items-center justify-center w-9 h-9 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+                                        title="Edit Profile">
+                                        <span class="material-symbols-outlined text-[20px]">edit</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- Contact Quick Actions -->
+                            <div class="mt-4 flex flex-wrap gap-3">
+                                <button
+                                    class="flex-1 min-w-[120px] h-10 bg-primary hover:bg-primary-dark text-white rounded-lg text-sm font-bold flex items-center justify-center gap-2 transition-colors shadow-sm shadow-blue-200 dark:shadow-none">
+                                    <span class="material-symbols-outlined text-[18px]">mail</span>
+                                    Send Email
+                                </button>
+                                <button
+                                    class="flex-1 min-w-[120px] h-10 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 rounded-lg text-sm font-bold flex items-center justify-center gap-2 hover:bg-slate-50 dark:hover:bg-slate-750 transition-colors">
+                                    <span class="material-symbols-outlined text-[18px]">call</span>
+                                    Call
+                                </button>
+                                <button
+                                    class="h-10 w-10 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800">
+                                    <span class="material-symbols-outlined text-[20px]">more_horiz</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Expanded Contact Details -->
+                    <div
+                        class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-100 dark:border-slate-800">
+                        <div class="flex flex-col gap-1">
+                            <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Phone</span>
+                            <span class="text-sm font-medium text-slate-900 dark:text-slate-200">+971 50 123 4567</span>
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Email</span>
+                            <span class="text-sm font-medium text-slate-900 dark:text-slate-200 truncate"
+                                title="ahmed.alfayed@example.com">ahmed.alfayed@example.com</span>
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <span
+                                class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Nationality</span>
+                            <span class="text-sm font-medium text-slate-900 dark:text-slate-200">UAE Resident</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Stats Row -->
+                <div class="px-6 pb-6">
+                    <div class="grid grid-cols-3 gap-4">
+                        <div
+                            class="p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm">
+                            <div class="flex items-center gap-2 mb-2">
+                                <div
+                                    class="p-1.5 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400">
+                                    <span class="material-symbols-outlined text-[20px]">apartment</span>
+                                </div>
+                                <span class="text-xs font-semibold text-slate-500 uppercase">Units</span>
+                            </div>
+                            <p class="text-2xl font-bold text-slate-900 dark:text-white">12</p>
+                        </div>
+                        <div
+                            class="p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm">
+                            <div class="flex items-center gap-2 mb-2">
+                                <div
+                                    class="p-1.5 rounded-md bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400">
+                                    <span class="material-symbols-outlined text-[20px]">pie_chart</span>
+                                </div>
+                                <span class="text-xs font-semibold text-slate-500 uppercase">Occupancy</span>
+                            </div>
+                            <p class="text-2xl font-bold text-slate-900 dark:text-white">92%</p>
+                        </div>
+                        <div
+                            class="p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm">
+                            <div class="flex items-center gap-2 mb-2">
+                                <div
+                                    class="p-1.5 rounded-md bg-purple-50 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400">
+                                    <span class="material-symbols-outlined text-[20px]">account_balance_wallet</span>
+                                </div>
+                                <span class="text-xs font-semibold text-slate-500 uppercase">Balance</span>
+                            </div>
+                            <p class="text-2xl font-bold text-slate-900 dark:text-white truncate">AED 45,200</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tabs Navigation -->
+                <div
+                    class="px-6 border-b border-slate-200 dark:border-slate-800 sticky top-0 bg-surface-light dark:bg-surface-dark z-10">
+                    <nav aria-label="Tabs" class="flex gap-6">
+                        <a class="pb-3 border-b-2 border-transparent text-sm font-medium text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
+                            href="#">
+                            Overview
+                        </a>
+                        <a class="pb-3 border-b-2 border-primary text-sm font-bold text-primary" href="#">
+                            Properties <span
+                                class="ml-1.5 py-0.5 px-2 rounded-full bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 text-xs">12</span>
+                        </a>
+                        <a class="pb-3 border-b-2 border-transparent text-sm font-medium text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
+                            href="#">
+                            Financials
+                        </a>
+                        <a class="pb-3 border-b-2 border-transparent text-sm font-medium text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
+                            href="#">
+                            Documents
+                        </a>
+                    </nav>
+                </div>
+                <!-- Tab Content: Properties -->
+                <div class="p-6 bg-slate-50/50 dark:bg-slate-900/20 min-h-[400px]">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-bold text-slate-900 dark:text-white">Active Properties</h3>
+                        <div class="flex gap-2">
+                            <button class="text-slate-400 hover:text-slate-600">
+                                <span class="material-symbols-outlined text-[20px]">filter_list</span>
+                            </button>
+                            <button class="text-slate-400 hover:text-slate-600">
+                                <span class="material-symbols-outlined text-[20px]">search</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        <!-- Property Card 1 -->
+                        <div
+                            class="group bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 p-4 hover:border-primary/50 dark:hover:border-primary/50 hover:shadow-md transition-all cursor-pointer">
+                            <div class="flex gap-4">
+                                <div class="w-20 h-20 rounded-lg bg-cover bg-center shrink-0"
+                                    data-alt="Modern high rise building facade"
+                                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCMWQWVP86ZF5_b3vlpbMbBcrDhKxYm2rFvI5QgMmbDoRukSuayN5mvOnqEQ5LXHn31R3pH2drr7z81W6vQYSdsko86V1oN5JeuIAJmHONJRxz5MQvXbvvjoEr61QFoAdIrOjwZuL6kKZ-Lri99-axuD6DaKB9bB5fn2nYf1dbzlcEo0px6QBVllc6bobEmwSGSJrgX8n77EIbnJkZsxgZXI8bREgcY8usfPziDR77fZcRrkQCQYuPb13wdx8WIz5DgiJEoMT1Wv3Mc');">
+                                </div>
+                                <div class="flex-1 min-w-0 flex flex-col justify-between">
+                                    <div>
+                                        <div class="flex justify-between items-start">
+                                            <h4
+                                                class="font-bold text-slate-900 dark:text-white truncate group-hover:text-primary transition-colors">
+                                                Marina Gate Tower 1</h4>
+                                            <span
+                                                class="px-2 py-0.5 rounded text-[11px] font-bold bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 border border-green-200 dark:border-green-800">Leased</span>
+                                        </div>
+                                        <div class="flex items-center gap-1 text-xs text-slate-500 mt-1">
+                                            <span class="material-symbols-outlined text-[14px]">location_on</span>
+                                            Dubai Marina, Unit 402
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="flex items-center justify-between mt-2 pt-2 border-t border-slate-100 dark:border-slate-700">
+                                        <div class="flex items-center gap-2">
+                                            <div
+                                                class="w-5 h-5 rounded-full bg-slate-200 flex items-center justify-center text-[10px] font-bold text-slate-600">
+                                                JD</div>
+                                            <span class="text-xs font-medium text-slate-700 dark:text-slate-300">John
+                                                Doe</span>
+                                        </div>
+                                        <span class="text-xs text-slate-400">Exp: 12/2024</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Property Card 2 -->
+                        <div
+                            class="group bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 p-4 hover:border-primary/50 dark:hover:border-primary/50 hover:shadow-md transition-all cursor-pointer">
+                            <div class="flex gap-4">
+                                <div class="w-20 h-20 rounded-lg bg-cover bg-center shrink-0"
+                                    data-alt="Glass office building view"
+                                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDaZoYTK7iYcBtHUDgDIBJa17xzF7bg8POVPIQmE3ckF3fNrU-MsoMAFpGgjPfuZft4EszCKrikajUINMaIi8ZKsYBdZBrsNoLozBI3z5uuXcn6PcLRRZyx-t42-OaQBOm9DC2IiCHRB33OQyU8QL1AB-iZmgcMQmOEN95pzckI8nHWUCs5jLYkNsgsJXbUbWF6TCB1yJsV-AFKy3W3OaUhFqs_13dCYLOKiGWBgdIgxZspDp5KKt6cI3vxG4Eir28IQWnTy0H2OM9U');">
+                                </div>
+                                <div class="flex-1 min-w-0 flex flex-col justify-between">
+                                    <div>
+                                        <div class="flex justify-between items-start">
+                                            <h4
+                                                class="font-bold text-slate-900 dark:text-white truncate group-hover:text-primary transition-colors">
+                                                Downtown Views II</h4>
+                                            <span
+                                                class="px-2 py-0.5 rounded text-[11px] font-bold bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400 border border-amber-200 dark:border-amber-800">Vacant</span>
+                                        </div>
+                                        <div class="flex items-center gap-1 text-xs text-slate-500 mt-1">
+                                            <span class="material-symbols-outlined text-[14px]">location_on</span>
+                                            Downtown Dubai, Unit 120
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="flex items-center justify-between mt-2 pt-2 border-t border-slate-100 dark:border-slate-700">
+                                        <div class="flex items-center gap-2">
+                                            <span class="text-xs italic text-slate-400">No active tenant</span>
+                                        </div>
+                                        <span
+                                            class="text-xs font-medium text-primary bg-primary/10 px-1.5 py-0.5 rounded">Listed</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Property Card 3 -->
+                        <div
+                            class="group bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 p-4 hover:border-primary/50 dark:hover:border-primary/50 hover:shadow-md transition-all cursor-pointer">
+                            <div class="flex gap-4">
+                                <div class="w-20 h-20 rounded-lg bg-cover bg-center shrink-0"
+                                    data-alt="Residential villa exterior"
+                                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBoOIdjInYHfpnY13XE3-2ET16IWytXK9LAavJ02bYxMIEubJHR8G0054KffcKwzbxuHCBPkH3X-rOTUtfCxJawbKr6m0mpbIv5PwT0QGv6dxYhGsb4QYZdL7N1-yc2iGrytrkiUNUijBCNSEQMBeyfGD0cM80hEV2pqtPNC_CH48-xl5LqxGTxqPVfzIU4ZdG0LInI99ZD1RL45w4jIcb0xi46HerrhMaqbeQTsuAQufuqEYsQn-poSG1zlBAIoHqBosRZsgr4ltV3');">
+                                </div>
+                                <div class="flex-1 min-w-0 flex flex-col justify-between">
+                                    <div>
+                                        <div class="flex justify-between items-start">
+                                            <h4
+                                                class="font-bold text-slate-900 dark:text-white truncate group-hover:text-primary transition-colors">
+                                                Palm Jumeirah Villa</h4>
+                                            <span
+                                                class="px-2 py-0.5 rounded text-[11px] font-bold bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400 border border-red-200 dark:border-red-800">Maintenance</span>
+                                        </div>
+                                        <div class="flex items-center gap-1 text-xs text-slate-500 mt-1">
+                                            <span class="material-symbols-outlined text-[14px]">location_on</span>
+                                            Frond N, Villa 45
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="flex items-center justify-between mt-2 pt-2 border-t border-slate-100 dark:border-slate-700">
+                                        <div class="flex items-center gap-2">
+                                            <div
+                                                class="w-5 h-5 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center text-[10px] font-bold">
+                                                FA</div>
+                                            <span class="text-xs font-medium text-slate-700 dark:text-slate-300">Fadi
+                                                A.</span>
+                                        </div>
+                                        <span class="text-xs text-slate-400">Exp: 03/2025</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Sticky Footer -->
+            <footer
+                class="p-4 border-t border-slate-200 dark:border-slate-800 bg-surface-light dark:bg-surface-dark shrink-0 flex justify-between items-center gap-4">
+                <button
+                    class="px-4 py-2.5 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 font-bold text-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                    Archive Landlord
+                </button>
+                <button
+                    class="px-6 py-2.5 rounded-lg bg-primary hover:bg-primary-dark text-white font-bold text-sm shadow-md shadow-blue-200 dark:shadow-none transition-colors flex items-center gap-2">
+                    <span class="material-symbols-outlined text-[18px]">description</span>
+                    Generate Statement
+                </button>
+            </footer>
+        </div>
+    </div>
+</body>
+
+</html>

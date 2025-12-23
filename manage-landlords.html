@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Landlord Management - PropConnect</title>
+    <!-- Google Fonts: Manrope -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet" />
+    <!-- Material Symbols -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Theme Configuration -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#182430",
+                        "border-light": "#e2e8f0",
+                        "border-dark": "#2d3748",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .icon-filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display transition-colors duration-200 h-screen overflow-hidden flex">
+    <!-- Sidebar -->
+    <aside
+        class="w-64 bg-surface-light dark:bg-surface-dark border-r border-border-light dark:border-border-dark flex-shrink-0 flex flex-col h-full relative z-20">
+        <!-- Logo -->
+        <div class="h-16 flex items-center px-6 border-b border-border-light dark:border-border-dark">
+            <div class="flex items-center gap-3">
+                <div class="size-8 rounded-lg bg-primary flex items-center justify-center text-white">
+                    <span class="material-symbols-outlined text-xl">domain</span>
+                </div>
+                <h1 class="text-lg font-bold tracking-tight text-slate-900 dark:text-white">PropConnect</h1>
+            </div>
+        </div>
+        <!-- Navigation -->
+        <nav class="flex-1 overflow-y-auto py-6 px-3 space-y-1">
+            <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors group"
+                href="index.html">
+                <span
+                    class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">dashboard</span>
+                <span class="font-medium text-sm">Dashboard</span>
+            </a>
+            <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors group"
+                href="properties-list.html">
+                <span
+                    class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">apartment</span>
+                <span class="font-medium text-sm">Properties</span>
+            </a>
+            <!-- Active Item -->
+            <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary dark:text-primary transition-colors group"
+                href="manage-landlords.html">
+                <span class="material-symbols-outlined icon-filled">person</span>
+                <span class="font-medium text-sm">Landlords</span>
+            </a>
+            <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors group"
+                href="manage-tentant.html">
+                <span
+                    class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">group</span>
+                <span class="font-medium text-sm">Tenants</span>
+            </a>
+            <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors group"
+                href="unit-list.html">
+                <span
+                    class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">build</span>
+                <span class="font-medium text-sm">Maintenance</span>
+            </a>
+            <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors group"
+                href="reports.html">
+                <span
+                    class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">description</span>
+                <span class="font-medium text-sm">Reports</span>
+            </a>
+        </nav>
+        <!-- User Profile -->
+        <div class="p-4 border-t border-border-light dark:border-border-dark">
+            <div class="flex items-center gap-3">
+                <div class="size-9 rounded-full bg-cover bg-center ring-2 ring-white dark:ring-slate-700"
+                    data-alt="Professional profile photo of property manager"
+                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAvfsNFKcIQJr-KmAQjvhiyyOUUxG-RL4IH5pJWkUaqdZQgm5KP0r29nmODkO4oooodpmOKo3Lf6Ky2YKX51cgvpNfaqqdoizRzS7J_xVfDuVMwPeHkeSRlAtXA5zGQTCRfSMV_MBJclK7YTZP6WdaiC58_ypA0UIbJR9QHKA0MC88c0vmvLayEpQYjvaXX-ksJn2Jc80XILG5furDUlNbm4llQEYIOHJfDwX0ZmtDk695_VYDxl3svDG6ulalTTAuxdpRD-J0Bv8l6');">
+                </div>
+                <div class="flex flex-col">
+                    <p class="text-sm font-semibold text-slate-900 dark:text-white">James Wilson</p>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">Property Manager</p>
+                </div>
+            </div>
+        </div>
+    </aside>
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col h-full overflow-hidden relative">
+        <!-- Top Bar / Breadcrumbs -->
+        <header
+            class="h-16 flex items-center justify-between px-8 bg-surface-light dark:bg-surface-dark border-b border-border-light dark:border-border-dark shrink-0">
+            <nav class="flex items-center text-sm font-medium text-slate-500 dark:text-slate-400">
+                <a class="hover:text-primary transition-colors" href="index.html">Home</a>
+                <span class="mx-2 text-slate-300 dark:text-slate-600">/</span>
+                <a class="hover:text-primary transition-colors" href="properties-list.html">CRM</a>
+                <span class="mx-2 text-slate-300 dark:text-slate-600">/</span>
+                <span class="text-slate-900 dark:text-white">Landlords</span>
+            </nav>
+            <div class="flex items-center gap-4">
+                <button
+                    class="text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                    <span class="material-symbols-outlined">notifications</span>
+                </button>
+                <button
+                    class="text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                    <span class="material-symbols-outlined">help</span>
+                </button>
+            </div>
+        </header>
+        <!-- Scrollable Content Area -->
+        <div class="flex-1 overflow-y-auto bg-background-light dark:bg-background-dark p-8">
+            <div class="max-w-[1400px] mx-auto flex flex-col h-full gap-6">
+                <!-- Page Heading & Actions -->
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div>
+                        <h2 class="text-2xl font-bold text-slate-900 dark:text-white leading-tight">Landlord Management
+                        </h2>
+                        <p class="text-slate-500 dark:text-slate-400 mt-1">Manage landlord profiles, properties, and
+                            contact details.</p>
+                    </div>
+                    <a href="landlord-create.html"
+                        class="inline-flex items-center justify-center gap-2 bg-primary hover:bg-blue-600 text-white px-5 py-2.5 rounded-lg font-semibold text-sm transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                        <span class="material-symbols-outlined text-[20px]">add</span>
+                        Add New Landlord
+                    </a>
+                </div>
+                <!-- Filters & Search -->
+                <div
+                    class="bg-surface-light dark:bg-surface-dark p-4 rounded-xl border border-border-light dark:border-border-dark shadow-sm">
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <div class="flex-1 relative">
+                            <span
+                                class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-[20px]">search</span>
+                            <input
+                                class="w-full pl-10 pr-4 py-2.5 rounded-lg border border-border-light dark:border-border-dark bg-white dark:bg-surface-dark text-slate-900 dark:text-white focus:ring-2 focus:ring-primary/20 focus:border-primary placeholder-slate-400 text-sm transition-shadow"
+                                placeholder="Search by Name, Email, or Property ID..." type="text" />
+                        </div>
+                        <div class="w-full md:w-48">
+                            <div class="relative">
+                                <span
+                                    class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-[20px]">filter_list</span>
+                                <select
+                                    class="w-full pl-10 pr-8 py-2.5 rounded-lg border border-border-light dark:border-border-dark bg-white dark:bg-surface-dark text-slate-900 dark:text-white focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm appearance-none cursor-pointer">
+                                    <option disabled="" selected="" value="">Filter by Status</option>
+                                    <option value="all">All Statuses</option>
+                                    <option value="active">Active</option>
+                                    <option value="inactive">Inactive</option>
+                                    <option value="pending">Pending</option>
+                                </select>
+                                <span
+                                    class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 text-[16px] pointer-events-none">expand_more</span>
+                            </div>
+                        </div>
+                        <div class="w-full md:w-48">
+                            <div class="relative">
+                                <span
+                                    class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-[20px]">location_city</span>
+                                <select
+                                    class="w-full pl-10 pr-8 py-2.5 rounded-lg border border-border-light dark:border-border-dark bg-white dark:bg-surface-dark text-slate-900 dark:text-white focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm appearance-none cursor-pointer">
+                                    <option disabled="" selected="" value="">City / Region</option>
+                                    <option value="dubai">Dubai</option>
+                                    <option value="abu-dhabi">Abu Dhabi</option>
+                                    <option value="sharjah">Sharjah</option>
+                                </select>
+                                <span
+                                    class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 text-[16px] pointer-events-none">expand_more</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Data Table -->
+                <div
+                    class="bg-surface-light dark:bg-surface-dark rounded-xl border border-border-light dark:border-border-dark shadow-sm overflow-hidden flex-1 flex flex-col">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr
+                                    class="bg-slate-50 dark:bg-slate-800/50 border-b border-border-light dark:border-border-dark">
+                                    <th class="p-4 w-12">
+                                        <input
+                                            class="rounded border-slate-300 text-primary focus:ring-primary/20 cursor-pointer"
+                                            type="checkbox" />
+                                    </th>
+                                    <th
+                                        class="py-4 px-4 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                                        Landlord Name</th>
+                                    <th
+                                        class="py-4 px-4 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                                        Contact Info</th>
+                                    <th
+                                        class="py-4 px-4 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                                        Associated Properties</th>
+                                    <th
+                                        class="py-4 px-4 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider text-center">
+                                        Units</th>
+                                    <th
+                                        class="py-4 px-4 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                                        Status</th>
+                                    <th
+                                        class="py-4 px-4 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider text-right">
+                                        Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-border-light dark:divide-border-dark">
+                                <!-- Row 1 -->
+                                <tr
+                                    class="group hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors cursor-pointer">
+                                    <td class="p-4">
+                                        <input
+                                            class="rounded border-slate-300 text-primary focus:ring-primary/20 cursor-pointer"
+                                            type="checkbox" />
+                                    </td>
+                                    <td class="p-4">
+                                        <div class="flex items-center gap-3">
+                                            <div class="size-10 rounded-full bg-slate-200 dark:bg-slate-700 bg-cover bg-center"
+                                                data-alt="Portrait of Ahmed Al-Mansoori"
+                                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDzMMUQTuQoP7hKPEkVUSZRs7motGkQRqsHVWrOySpSijP3DZwop-Yhj7z4Sp0qHBROSozjO5ooSdlaPtrgSGRRZZxK9d_X9ZaGSmy9cDtFNA8BT-JD0cY6VDgl67WME8bC3GZMrAFQzeUHehoiGyQEo9l_-5_wR_AmHgdFbvwgU3_H7n0plOMGvsL6prxuQ2P64-tRWhXtJargexWCxep5xAdW7S0sDiAG1aI7xN9XYaxu5e11kbPh0cRICoGUdWafOQljSMM4ptbU');">
+                                            </div>
+                                            <div>
+                                                <p class="font-semibold text-slate-900 dark:text-white text-sm">Ahmed
+                                                    Al-Mansoori</p>
+                                                <p class="text-xs text-slate-500">ID: #LL-892</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="p-4">
+                                        <div class="flex flex-col gap-1">
+                                            <div
+                                                class="flex items-center gap-2 text-sm text-slate-700 dark:text-slate-300">
+                                                <span
+                                                    class="material-symbols-outlined text-[16px] text-slate-400">call</span>
+                                                +971 50 123 4567
+                                            </div>
+                                            <div class="flex items-center gap-2 text-sm text-slate-500">
+                                                <span
+                                                    class="material-symbols-outlined text-[16px] text-slate-400">mail</span>
+                                                ahmed.m@example.com
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="p-4">
+                                        <div class="flex flex-wrap gap-2 max-w-[280px]">
+                                            <span
+                                                class="inline-flex items-center px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 text-xs font-medium text-slate-700 dark:text-slate-300 border border-border-light dark:border-border-dark truncate max-w-full">
+                                                Marina Heights Tower
+                                            </span>
+                                            <span
+                                                class="inline-flex items-center px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 text-xs font-medium text-slate-700 dark:text-slate-300 border border-border-light dark:border-border-dark truncate max-w-full">
+                                                Villa 42 Springs
+                                            </span>
+                                        </div>
+                                    </td>
+                                    <td class="p-4 text-center">
+                                        <span
+                                            class="text-sm font-medium text-slate-900 dark:text-white tabular-nums">12</span>
+                                    </td>
+                                    <td class="p-4">
+                                        <span
+                                            class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-100 dark:bg-emerald-900/20 dark:text-emerald-400 dark:border-emerald-800">
+                                            <span class="size-1.5 rounded-full bg-emerald-500"></span>
+                                            Active
+                                        </span>
+                                    </td>
+                                    <td class="p-4 text-right">
+                                        <button
+                                            class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                                            <span class="material-symbols-outlined text-[20px]">more_vert</span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <!-- Row 2 -->
+                                <tr
+                                    class="group hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors cursor-pointer">
+                                    <td class="p-4">
+                                        <input
+                                            class="rounded border-slate-300 text-primary focus:ring-primary/20 cursor-pointer"
+                                            type="checkbox" />
+                                    </td>
+                                    <td class="p-4">
+                                        <div class="flex items-center gap-3">
+                                            <div class="size-10 rounded-full bg-slate-200 dark:bg-slate-700 bg-cover bg-center"
+                                                data-alt="Portrait of Fatima Al-Kaabi"
+                                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBX9cY5791DTZD63Fl8C4p0vxmnT8Oh8QJKLldHr0ipq0RAkDO05f5Aht44mgQ2ZDyziDiqdEE2TvjMyOTYcyW9G5XiTmjf8HA0ozYWdlx1cql6CN3CxHzyndWmBN0Zdhk3hdeOCElmW6B0lIDRWess3wDwCwQWyrzpyjE6RzDZK0A0oO1jRjwXZzhkmCqs3CVNhv7TOQ7kUcKs6BNukNW_zvPwEAjVUhuuHvd2NH1gpJ5OrEuVih2MRtmjR7DnaxReRip5kpbyAAiR');">
+                                            </div>
+                                            <div>
+                                                <p class="font-semibold text-slate-900 dark:text-white text-sm">Fatima
+                                                    Al-Kaabi</p>
+                                                <p class="text-xs text-slate-500">ID: #LL-893</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="p-4">
+                                        <div class="flex flex-col gap-1">
+                                            <div
+                                                class="flex items-center gap-2 text-sm text-slate-700 dark:text-slate-300">
+                                                <span
+                                                    class="material-symbols-outlined text-[16px] text-slate-400">call</span>
+                                                +971 55 987 6543
+                                            </div>
+                                            <div class="flex items-center gap-2 text-sm text-slate-500">
+                                                <span
+                                                    class="material-symbols-outlined text-[16px] text-slate-400">mail</span>
+                                                fatima.k@example.com
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="p-4">
+                                        <div class="flex flex-wrap gap-2 max-w-[280px]">
+                                            <span
+                                                class="inline-flex items-center px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 text-xs font-medium text-slate-700 dark:text-slate-300 border border-border-light dark:border-border-dark truncate max-w-full">
+                                                Downtown Views II
+                                            </span>
+                                        </div>
+                                    </td>
+                                    <td class="p-4 text-center">
+                                        <span
+                                            class="text-sm font-medium text-slate-900 dark:text-white tabular-nums">5</span>
+                                    </td>
+                                    <td class="p-4">
+                                        <span
+                                            class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-100 dark:bg-emerald-900/20 dark:text-emerald-400 dark:border-emerald-800">
+                                            <span class="size-1.5 rounded-full bg-emerald-500"></span>
+                                            Active
+                                        </span>
+                                    </td>
+                                    <td class="p-4 text-right">
+                                        <button
+                                            class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                                            <span class="material-symbols-outlined text-[20px]">more_vert</span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <!-- Row 3 -->
+                                <tr
+                                    class="group hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors cursor-pointer">
+                                    <td class="p-4">
+                                        <input
+                                            class="rounded border-slate-300 text-primary focus:ring-primary/20 cursor-pointer"
+                                            type="checkbox" />
+                                    </td>
+                                    <td class="p-4">
+                                        <div class="flex items-center gap-3">
+                                            <div
+                                                class="size-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-primary font-bold text-sm border border-slate-200 dark:border-slate-700">
+                                                JS
+                                            </div>
+                                            <div>
+                                                <p class="font-semibold text-slate-900 dark:text-white text-sm">John
+                                                    Smith</p>
+                                                <p class="text-xs text-slate-500">ID: #LL-901</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="p-4">
+                                        <div class="flex flex-col gap-1">
+                                            <div
+                                                class="flex items-center gap-2 text-sm text-slate-700 dark:text-slate-300">
+                                                <span
+                                                    class="material-symbols-outlined text-[16px] text-slate-400">call</span>
+                                                +971 52 555 1212
+                                            </div>
+                                            <div class="flex items-center gap-2 text-sm text-slate-500">
+                                                <span
+                                                    class="material-symbols-outlined text-[16px] text-slate-400">mail</span>
+                                                john.s@example.com
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="p-4">
+                                        <div class="flex flex-wrap gap-2 max-w-[280px]">
+                                            <span
+                                                class="inline-flex items-center px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 text-xs font-medium text-slate-700 dark:text-slate-300 border border-border-light dark:border-border-dark truncate max-w-full">
+                                                Palm Jumeirah Villa
+                                            </span>
+                                        </div>
+                                    </td>
+                                    <td class="p-4 text-center">
+                                        <span
+                                            class="text-sm font-medium text-slate-900 dark:text-white tabular-nums">1</span>
+                                    </td>
+                                    <td class="p-4">
+                                        <span
+                                            class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-slate-100 text-slate-600 border border-slate-200 dark:bg-slate-800 dark:text-slate-400 dark:border-slate-700">
+                                            <span class="size-1.5 rounded-full bg-slate-400"></span>
+                                            Inactive
+                                        </span>
+                                    </td>
+                                    <td class="p-4 text-right">
+                                        <button
+                                            class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                                            <span class="material-symbols-outlined text-[20px]">more_vert</span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <!-- Row 4 -->
+                                <tr
+                                    class="group hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors cursor-pointer bg-primary/5 dark:bg-primary/5 border-l-2 border-l-primary">
+                                    <!-- Selected Row Style applied above -->
+                                    <td class="p-4">
+                                        <input checked=""
+                                            class="rounded border-slate-300 text-primary focus:ring-primary/20 cursor-pointer"
+                                            type="checkbox" />
+                                    </td>
+                                    <td class="p-4">
+                                        <div class="flex items-center gap-3">
+                                            <div
+                                                class="size-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-primary font-bold text-sm border border-slate-200 dark:border-slate-700">
+                                                EP
+                                            </div>
+                                            <div>
+                                                <p class="font-semibold text-slate-900 dark:text-white text-sm">Emaar
+                                                    Properties</p>
+                                                <p class="text-xs text-slate-500">ID: #LL-800</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="p-4">
+                                        <div class="flex flex-col gap-1">
+                                            <div
+                                                class="flex items-center gap-2 text-sm text-slate-700 dark:text-slate-300">
+                                                <span
+                                                    class="material-symbols-outlined text-[16px] text-slate-400">call</span>
+                                                +971 4 367 3333
+                                            </div>
+                                            <div class="flex items-center gap-2 text-sm text-slate-500">
+                                                <span
+                                                    class="material-symbols-outlined text-[16px] text-slate-400">mail</span>
+                                                contact@emaar.com
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="p-4">
+                                        <div class="flex flex-wrap gap-2 max-w-[280px]">
+                                            <span
+                                                class="inline-flex items-center px-2.5 py-1 rounded bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 border border-border-light dark:border-border-dark truncate max-w-full shadow-sm">
+                                                Burj Khalifa
+                                            </span>
+                                            <span
+                                                class="inline-flex items-center px-2.5 py-1 rounded bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 border border-border-light dark:border-border-dark truncate max-w-full shadow-sm">
+                                                The Address
+                                            </span>
+                                            <span
+                                                class="inline-flex items-center px-1.5 py-1 rounded bg-slate-200 dark:bg-slate-700 text-[10px] font-bold text-slate-600 dark:text-slate-300">
+                                                +148
+                                            </span>
+                                        </div>
+                                    </td>
+                                    <td class="p-4 text-center">
+                                        <span
+                                            class="text-sm font-medium text-slate-900 dark:text-white tabular-nums">150</span>
+                                    </td>
+                                    <td class="p-4">
+                                        <span
+                                            class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-100 dark:bg-emerald-900/20 dark:text-emerald-400 dark:border-emerald-800">
+                                            <span class="size-1.5 rounded-full bg-emerald-500"></span>
+                                            Active
+                                        </span>
+                                    </td>
+                                    <td class="p-4 text-right">
+                                        <button
+                                            class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                                            <span class="material-symbols-outlined text-[20px]">more_vert</span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <!-- Row 5 -->
+                                <tr
+                                    class="group hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors cursor-pointer">
+                                    <td class="p-4">
+                                        <input
+                                            class="rounded border-slate-300 text-primary focus:ring-primary/20 cursor-pointer"
+                                            type="checkbox" />
+                                    </td>
+                                    <td class="p-4">
+                                        <div class="flex items-center gap-3">
+                                            <div class="size-10 rounded-full bg-slate-200 dark:bg-slate-700 bg-cover bg-center"
+                                                data-alt="Portrait of Khalid Bin Sultan"
+                                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAz9_pCkKLLATNxaHq63OPnYRe5PTL6favptpaBh7hUVfV54W-wWtEe46F7lFSPYs_YUJaXpYK0aVc-o3T7e1vhXZKTipZnGb8J2QH0yXERptc--jYhnxh3gRPga4rtNajQ8vmy-eqhUVmoqJSgsopiD1CuZFud4ksdSlfRQX0GoC4L6dzdmBrLZTIVVBCK58wBRWPmz1WgOG53u5oEHozzpI2QhdY1djFMiLzEQVStLpatG5Bl7MioRP3QyfZ-rDb0Q8OxlfGIogLj');">
+                                            </div>
+                                            <div>
+                                                <p class="font-semibold text-slate-900 dark:text-white text-sm">Khalid
+                                                    Bin Sultan</p>
+                                                <p class="text-xs text-slate-500">ID: #LL-915</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="p-4">
+                                        <div class="flex flex-col gap-1">
+                                            <div
+                                                class="flex items-center gap-2 text-sm text-slate-700 dark:text-slate-300">
+                                                <span
+                                                    class="material-symbols-outlined text-[16px] text-slate-400">call</span>
+                                                +971 50 777 8888
+                                            </div>
+                                            <div class="flex items-center gap-2 text-sm text-slate-500">
+                                                <span
+                                                    class="material-symbols-outlined text-[16px] text-slate-400">mail</span>
+                                                khalid.b@example.com
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="p-4">
+                                        <div class="flex flex-wrap gap-2 max-w-[280px]">
+                                            <span
+                                                class="inline-flex items-center px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 text-xs font-medium text-slate-700 dark:text-slate-300 border border-border-light dark:border-border-dark truncate max-w-full">
+                                                JVC District 10
+                                            </span>
+                                        </div>
+                                    </td>
+                                    <td class="p-4 text-center">
+                                        <span
+                                            class="text-sm font-medium text-slate-900 dark:text-white tabular-nums">8</span>
+                                    </td>
+                                    <td class="p-4">
+                                        <span
+                                            class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-amber-50 text-amber-700 border border-amber-100 dark:bg-amber-900/20 dark:text-amber-400 dark:border-amber-800">
+                                            <span class="size-1.5 rounded-full bg-amber-500"></span>
+                                            Pending Docs
+                                        </span>
+                                    </td>
+                                    <td class="p-4 text-right">
+                                        <button
+                                            class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                                            <span class="material-symbols-outlined text-[20px]">more_vert</span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Pagination -->
+                    <div
+                        class="flex items-center justify-between px-4 py-3 border-t border-border-light dark:border-border-dark bg-white dark:bg-surface-dark mt-auto">
+                        <div class="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
+                            <span>Rows per page:</span>
+                            <select
+                                class="border-none bg-transparent py-0 pl-1 pr-6 text-sm font-semibold text-slate-900 dark:text-white focus:ring-0 cursor-pointer">
+                                <option>10</option>
+                                <option>25</option>
+                                <option>50</option>
+                            </select>
+                        </div>
+                        <div class="flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400">
+                            <span>1-5 of 148</span>
+                            <div class="flex items-center gap-1">
+                                <button
+                                    class="p-1 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 disabled:opacity-50 transition-colors"
+                                    disabled="">
+                                    <span class="material-symbols-outlined text-[20px]">chevron_left</span>
+                                </button>
+                                <button
+                                    class="p-1 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                                    <span class="material-symbols-outlined text-[20px]">chevron_right</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Right Drawer (Visually simulated as "in context" but hidden by default in static HTML, 
+         here we render it closed. If user wanted open, I would add a div overlay. 
+         I will keep it clean as requested for the main view) -->
+</body>
+
+</html>

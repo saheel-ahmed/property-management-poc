@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Contract Detail - PropConnect</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Theme Configuration -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1a2632",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.375rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        /* Custom scrollbar for webkit browsers */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .icon-filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display overflow-hidden">
+    <div class="flex h-screen w-full">
+        <!-- Sidebar -->
+        <aside
+            class="hidden lg:flex w-64 flex-col bg-surface-light dark:bg-surface-dark border-r border-slate-200 dark:border-slate-800 h-full flex-shrink-0 z-20">
+            <div class="p-6 pb-2">
+                <div class="flex items-center gap-3">
+                    <div class="bg-primary/10 flex items-center justify-center rounded-lg size-10">
+                        <span class="material-symbols-outlined text-primary text-2xl">apartment</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <h1 class="text-slate-900 dark:text-white text-base font-bold leading-tight">PropConnect</h1>
+                        <p class="text-slate-500 dark:text-slate-400 text-xs font-medium">UAE Property Manager</p>
+                    </div>
+                </div>
+            </div>
+            <nav class="flex-1 overflow-y-auto px-4 py-6 space-y-1">
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors group"
+                    href="#">
+                    <span
+                        class="material-symbols-outlined text-xl group-hover:text-primary transition-colors">dashboard</span>
+                    <span class="text-sm font-medium group-hover:text-primary transition-colors">Dashboard</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors group"
+                    href="#">
+                    <span
+                        class="material-symbols-outlined text-xl group-hover:text-primary transition-colors">domain</span>
+                    <span class="text-sm font-medium group-hover:text-primary transition-colors">Properties</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary" href="#">
+                    <span class="material-symbols-outlined text-xl icon-filled">description</span>
+                    <span class="text-sm font-bold">Contracts</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors group"
+                    href="#">
+                    <span
+                        class="material-symbols-outlined text-xl group-hover:text-primary transition-colors">group</span>
+                    <span class="text-sm font-medium group-hover:text-primary transition-colors">Tenants</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors group"
+                    href="#">
+                    <span
+                        class="material-symbols-outlined text-xl group-hover:text-primary transition-colors">account_balance_wallet</span>
+                    <span class="text-sm font-medium group-hover:text-primary transition-colors">Finance</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors group"
+                    href="#">
+                    <span
+                        class="material-symbols-outlined text-xl group-hover:text-primary transition-colors">handyman</span>
+                    <span class="text-sm font-medium group-hover:text-primary transition-colors">Maintenance</span>
+                </a>
+            </nav>
+            <div class="p-4 border-t border-slate-200 dark:border-slate-800">
+                <div class="flex items-center gap-3 px-2 py-2">
+                    <div class="size-8 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden bg-cover bg-center"
+                        data-alt="User profile picture"
+                        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBbn-7Ndz7MnkSZVfFZnI2_Fui25nYl9lESH2El9n1UXL1tCHUMvaif3KPdiKey1pJS2MyxTTM-HWiV6luOy8Z1RShavJ2cP7GxuY7CfNH-Fpvatu8-6uK1kCmNVEIQw5CPJqKUGvg-7HB_McoiDzkkvKYAF75-J-P1UxtMichPOPH5ZAvfZWjJG31M9hxUGD7FkcKzJ5Ky5F0bEd_eJejG2Cq0czlLv68EWDv46kyoKx6dsk03Y1VFYbujk8RXxqHxWUWGdYvEHPHv');">
+                    </div>
+                    <div class="flex flex-col">
+                        <p class="text-sm font-semibold text-slate-900 dark:text-white">Ahmed Al-Sayed</p>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Agent Admin</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        <!-- Main Content -->
+        <main class="flex-1 h-full overflow-y-auto overflow-x-hidden relative">
+            <div class="w-full max-w-[1440px] mx-auto p-4 md:p-6 lg:p-8 space-y-6">
+                <!-- Breadcrumbs -->
+                <nav class="flex items-center text-sm font-medium text-slate-500 dark:text-slate-400">
+                    <a class="hover:text-primary transition-colors" href="#">Contracts</a>
+                    <span class="mx-2 text-slate-300 dark:text-slate-600">/</span>
+                    <a class="hover:text-primary transition-colors" href="#">Residential</a>
+                    <span class="mx-2 text-slate-300 dark:text-slate-600">/</span>
+                    <span class="text-slate-900 dark:text-white">CNT-2024-001</span>
+                </nav>
+                <!-- Header Section -->
+                <div class="flex flex-col gap-6">
+                    <!-- Title & Actions Row -->
+                    <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+                        <div class="flex flex-col gap-2">
+                            <div class="flex items-center gap-3 flex-wrap">
+                                <h1
+                                    class="text-3xl md:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
+                                    Contract #CNT-2024-001</h1>
+                                <div class="flex items-center gap-2">
+                                    <span
+                                        class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/20">
+                                        <span class="size-1.5 rounded-full bg-emerald-500"></span> Active
+                                    </span>
+                                    <span
+                                        class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-700 dark:bg-blue-500/10 dark:text-blue-400 border border-blue-200 dark:border-blue-500/20">
+                                        <span class="material-symbols-outlined text-[14px]">verified</span> Ejari
+                                        Registered
+                                    </span>
+                                </div>
+                            </div>
+                            <p class="text-slate-500 dark:text-slate-400 text-lg">Burj Khalifa • Unit 401 • Downtown
+                                Dubai</p>
+                        </div>
+                        <div class="flex flex-wrap items-center gap-3">
+                            <button
+                                class="flex items-center justify-center gap-2 px-4 h-10 rounded-lg border border-slate-200 dark:border-slate-700 bg-surface-light dark:bg-surface-dark text-slate-700 dark:text-slate-200 text-sm font-bold hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                                <span class="material-symbols-outlined text-[20px]">file_download</span>
+                                <span class="whitespace-nowrap">Download Ejari</span>
+                            </button>
+                            <button
+                                class="flex items-center justify-center gap-2 px-4 h-10 rounded-lg border border-red-200 dark:border-red-900/30 bg-red-50 dark:bg-red-900/10 text-red-600 dark:text-red-400 text-sm font-bold hover:bg-red-100 dark:hover:bg-red-900/20 transition-colors">
+                                <span class="material-symbols-outlined text-[20px]">block</span>
+                                <span class="whitespace-nowrap">Terminate</span>
+                            </button>
+                            <button
+                                class="flex items-center justify-center gap-2 px-5 h-10 rounded-lg bg-primary text-white text-sm font-bold hover:bg-blue-600 transition-colors shadow-sm shadow-blue-500/20">
+                                <span class="material-symbols-outlined text-[20px]">autorenew</span>
+                                <span class="whitespace-nowrap">Renew Contract</span>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Key Metrics Grid -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div
+                            class="bg-surface-light dark:bg-surface-dark p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                            <p
+                                class="text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-wider mb-1">
+                                Annual Rent</p>
+                            <p class="text-xl font-bold text-slate-900 dark:text-white">AED 240,000</p>
+                        </div>
+                        <div
+                            class="bg-surface-light dark:bg-surface-dark p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                            <p
+                                class="text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-wider mb-1">
+                                Security Deposit</p>
+                            <p class="text-xl font-bold text-slate-900 dark:text-white">AED 12,000</p>
+                        </div>
+                        <div
+                            class="bg-surface-light dark:bg-surface-dark p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                            <p
+                                class="text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-wider mb-1">
+                                Start Date</p>
+                            <p class="text-xl font-bold text-slate-900 dark:text-white">01 Jan 2024</p>
+                        </div>
+                        <div
+                            class="bg-surface-light dark:bg-surface-dark p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                            <p
+                                class="text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-wider mb-1">
+                                End Date</p>
+                            <div class="flex items-center gap-2">
+                                <p class="text-xl font-bold text-slate-900 dark:text-white">31 Dec 2024</p>
+                                <span
+                                    class="text-xs font-medium text-orange-500 bg-orange-50 dark:bg-orange-900/20 px-1.5 py-0.5 rounded">Expiring
+                                    Soon</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tabs Navigation -->
+                <div class="border-b border-slate-200 dark:border-slate-800">
+                    <nav aria-label="Tabs" class="flex gap-6 overflow-x-auto">
+                        <a aria-current="page"
+                            class="border-b-2 border-primary text-primary whitespace-nowrap py-4 px-1 text-sm font-bold"
+                            href="#">
+                            Overview
+                        </a>
+                        <a class="border-b-2 border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:border-slate-300 whitespace-nowrap py-4 px-1 text-sm font-medium"
+                            href="#">
+                            Financials
+                        </a>
+                        <a class="border-b-2 border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:border-slate-300 whitespace-nowrap py-4 px-1 text-sm font-medium"
+                            href="#">
+                            Terms &amp; Addendum
+                        </a>
+                        <a class="border-b-2 border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:border-slate-300 whitespace-nowrap py-4 px-1 text-sm font-medium"
+                            href="#">
+                            Documents <span
+                                class="ml-1.5 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 py-0.5 px-2 rounded-full text-xs">4</span>
+                        </a>
+                        <a class="border-b-2 border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:border-slate-300 whitespace-nowrap py-4 px-1 text-sm font-medium"
+                            href="#">
+                            History
+                        </a>
+                    </nav>
+                </div>
+                <!-- Tab Content -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <!-- Left Column: Tenant & Property -->
+                    <div class="lg:col-span-1 flex flex-col gap-6">
+                        <!-- Tenant Card -->
+                        <div
+                            class="bg-surface-light dark:bg-surface-dark rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+                            <div
+                                class="px-5 py-4 border-b border-slate-200 dark:border-slate-800 flex justify-between items-center bg-slate-50/50 dark:bg-slate-800/50">
+                                <h3 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">
+                                    Tenant Details</h3>
+                                <button class="text-primary text-sm font-medium hover:underline">View Profile</button>
+                            </div>
+                            <div class="p-5 flex flex-col gap-4">
+                                <div class="flex items-center gap-4">
+                                    <div class="size-14 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden bg-cover bg-center border-2 border-white dark:border-slate-800 shadow-sm"
+                                        data-alt="Tenant profile photo"
+                                        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCUIWByHkQUiT-6Li0DVDTcw5QmE8-gy0RMHKxr39BjFxOlT0dKQUG797tvWRz-2kp_201gfhD6QacJhWcjlbqHpCo-hyfLX1hQip2FtnbaH58YLVtddpFyvUW_F-wcSJgVdiHs1XZbF1oKvn2ZPQeL1xG1cvYwpTPRXarac8to7hqXdqBYFyT6obPUkJhkBT04-nvKjJrq_TJGiTQsDLmUBX9Y_SNkJslUEot6hEzXSfS8NsFriXSMpcTllOvIfmi5MmiLPb-0lL-o');">
+                                    </div>
+                                    <div>
+                                        <p class="text-lg font-bold text-slate-900 dark:text-white">Johnathan Doe</p>
+                                        <p class="text-sm text-slate-500 dark:text-slate-400">Individual Tenant</p>
+                                    </div>
+                                </div>
+                                <hr class="border-slate-100 dark:border-slate-800/50" />
+                                <div class="space-y-3">
+                                    <div class="flex items-center gap-3">
+                                        <span class="material-symbols-outlined text-slate-400 text-[20px]">badge</span>
+                                        <div>
+                                            <p class="text-xs text-slate-500 dark:text-slate-400">Emirates ID</p>
+                                            <p class="text-sm font-medium text-slate-900 dark:text-white">
+                                                784-1985-1234567-1</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-3">
+                                        <span class="material-symbols-outlined text-slate-400 text-[20px]">phone</span>
+                                        <div>
+                                            <p class="text-xs text-slate-500 dark:text-slate-400">Phone</p>
+                                            <p class="text-sm font-medium text-slate-900 dark:text-white">+971 50 123
+                                                4567</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-3">
+                                        <span class="material-symbols-outlined text-slate-400 text-[20px]">mail</span>
+                                        <div>
+                                            <p class="text-xs text-slate-500 dark:text-slate-400">Email</p>
+                                            <p class="text-sm font-medium text-slate-900 dark:text-white">
+                                                john.doe@example.com</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Property Card -->
+                        <div
+                            class="bg-surface-light dark:bg-surface-dark rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+                            <div
+                                class="px-5 py-4 border-b border-slate-200 dark:border-slate-800 flex justify-between items-center bg-slate-50/50 dark:bg-slate-800/50">
+                                <h3 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">
+                                    Property Details</h3>
+                                <button class="text-primary text-sm font-medium hover:underline">View Unit</button>
+                            </div>
+                            <div class="h-40 w-full bg-cover bg-center relative"
+                                data-alt="Modern building exterior in Dubai"
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuApNmmlm7gJYT3xGslcXJtpC_ppTcFVzz_6Rjnt1i_1NGh7UEmgPeliD0k9zNO-6AzNo0LI30YTznD8xOqRULZueyj70daW7Nxr-qtRFU21AyWN6vyPtFK6HoaeuzwR4YMzWlXk1MWcsFE7qy43rVHj1frNWNaAD8P7_GHsVLa6YqAQD0QtlMltmneL3X0odnQ_xqEMPAe79CDMzy6SKjAyfE8b7hfJGYrUzSmoe8F32Cq4E_jE6rGnnlcLfi9QOADn27VR1NAG1G8D');">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                                <div class="absolute bottom-3 left-3 text-white">
+                                    <p class="font-bold text-lg leading-none">Unit 401</p>
+                                    <p class="text-xs opacity-90">Burj Khalifa, Downtown</p>
+                                </div>
+                            </div>
+                            <div class="p-5 flex flex-col gap-4">
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <p class="text-xs text-slate-500 dark:text-slate-400 mb-0.5">Type</p>
+                                        <p class="text-sm font-medium text-slate-900 dark:text-white">2 Bedroom Apt</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-slate-500 dark:text-slate-400 mb-0.5">Size</p>
+                                        <p class="text-sm font-medium text-slate-900 dark:text-white">1,650 sq.ft</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-slate-500 dark:text-slate-400 mb-0.5">Ejari No.</p>
+                                        <p class="text-sm font-medium text-slate-900 dark:text-white">1002394857</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-slate-500 dark:text-slate-400 mb-0.5">DEWA Premise</p>
+                                        <p class="text-sm font-medium text-slate-900 dark:text-white">239485711</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Right Column: Cheque Schedule / Financials -->
+                    <div class="lg:col-span-2 flex flex-col gap-6">
+                        <!-- Cheque Schedule Table -->
+                        <div
+                            class="bg-surface-light dark:bg-surface-dark rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden flex flex-col h-full">
+                            <div
+                                class="px-5 py-4 border-b border-slate-200 dark:border-slate-800 flex justify-between items-center bg-slate-50/50 dark:bg-slate-800/50">
+                                <div class="flex items-center gap-3">
+                                    <h3
+                                        class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">
+                                        Cheque Schedule</h3>
+                                    <span
+                                        class="bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-[10px] font-bold px-2 py-0.5 rounded-full">4
+                                        Cheques</span>
+                                </div>
+                                <button
+                                    class="flex items-center gap-1 text-slate-500 dark:text-slate-400 hover:text-primary text-sm font-medium transition-colors">
+                                    <span class="material-symbols-outlined text-[18px]">add</span> Add Payment
+                                </button>
+                            </div>
+                            <div class="overflow-x-auto flex-1">
+                                <table class="w-full text-left border-collapse">
+                                    <thead>
+                                        <tr
+                                            class="border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/20 text-xs uppercase text-slate-500 dark:text-slate-400">
+                                            <th class="px-5 py-3 font-semibold tracking-wider">Date</th>
+                                            <th class="px-5 py-3 font-semibold tracking-wider">Cheque #</th>
+                                            <th class="px-5 py-3 font-semibold tracking-wider">Bank</th>
+                                            <th class="px-5 py-3 font-semibold tracking-wider text-right">Amount (AED)
+                                            </th>
+                                            <th class="px-5 py-3 font-semibold tracking-wider text-center">Status</th>
+                                            <th class="px-5 py-3 font-semibold tracking-wider text-right">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="text-sm divide-y divide-slate-100 dark:divide-slate-800">
+                                        <tr
+                                            class="group hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                                            <td class="px-5 py-4 font-medium text-slate-900 dark:text-white">01 Jan 2024
+                                            </td>
+                                            <td class="px-5 py-4 text-slate-500 dark:text-slate-400">CHQ-001234</td>
+                                            <td
+                                                class="px-5 py-4 text-slate-500 dark:text-slate-400 flex items-center gap-2">
+                                                <div
+                                                    class="size-5 rounded-full bg-red-600 flex items-center justify-center text-white text-[8px] font-bold">
+                                                    EN</div>
+                                                Emirates NBD
+                                            </td>
+                                            <td
+                                                class="px-5 py-4 text-slate-900 dark:text-white font-bold text-right tabular-nums">
+                                                60,000</td>
+                                            <td class="px-5 py-4 text-center">
+                                                <span
+                                                    class="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-emerald-100 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400">
+                                                    Cleared
+                                                </span>
+                                            </td>
+                                            <td class="px-5 py-4 text-right">
+                                                <button class="text-slate-400 hover:text-primary transition-colors">
+                                                    <span
+                                                        class="material-symbols-outlined text-[20px]">visibility</span>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr
+                                            class="group hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                                            <td class="px-5 py-4 font-medium text-slate-900 dark:text-white">01 Apr 2024
+                                            </td>
+                                            <td class="px-5 py-4 text-slate-500 dark:text-slate-400">CHQ-001235</td>
+                                            <td
+                                                class="px-5 py-4 text-slate-500 dark:text-slate-400 flex items-center gap-2">
+                                                <div
+                                                    class="size-5 rounded-full bg-red-600 flex items-center justify-center text-white text-[8px] font-bold">
+                                                    EN</div>
+                                                Emirates NBD
+                                            </td>
+                                            <td
+                                                class="px-5 py-4 text-slate-900 dark:text-white font-bold text-right tabular-nums">
+                                                60,000</td>
+                                            <td class="px-5 py-4 text-center">
+                                                <span
+                                                    class="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-emerald-100 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400">
+                                                    Cleared
+                                                </span>
+                                            </td>
+                                            <td class="px-5 py-4 text-right">
+                                                <button class="text-slate-400 hover:text-primary transition-colors">
+                                                    <span
+                                                        class="material-symbols-outlined text-[20px]">visibility</span>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr
+                                            class="group hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                                            <td class="px-5 py-4 font-medium text-slate-900 dark:text-white">01 Jul 2024
+                                            </td>
+                                            <td class="px-5 py-4 text-slate-500 dark:text-slate-400">CHQ-001236</td>
+                                            <td
+                                                class="px-5 py-4 text-slate-500 dark:text-slate-400 flex items-center gap-2">
+                                                <div
+                                                    class="size-5 rounded-full bg-red-600 flex items-center justify-center text-white text-[8px] font-bold">
+                                                    EN</div>
+                                                Emirates NBD
+                                            </td>
+                                            <td
+                                                class="px-5 py-4 text-slate-900 dark:text-white font-bold text-right tabular-nums">
+                                                60,000</td>
+                                            <td class="px-5 py-4 text-center">
+                                                <span
+                                                    class="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-amber-100 text-amber-700 dark:bg-amber-500/10 dark:text-amber-400">
+                                                    Pending
+                                                </span>
+                                            </td>
+                                            <td class="px-5 py-4 text-right">
+                                                <button class="text-slate-400 hover:text-primary transition-colors">
+                                                    <span
+                                                        class="material-symbols-outlined text-[20px]">visibility</span>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr
+                                            class="group hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                                            <td class="px-5 py-4 font-medium text-slate-900 dark:text-white">01 Oct 2024
+                                            </td>
+                                            <td class="px-5 py-4 text-slate-500 dark:text-slate-400">CHQ-001237</td>
+                                            <td
+                                                class="px-5 py-4 text-slate-500 dark:text-slate-400 flex items-center gap-2">
+                                                <div
+                                                    class="size-5 rounded-full bg-red-600 flex items-center justify-center text-white text-[8px] font-bold">
+                                                    EN</div>
+                                                Emirates NBD
+                                            </td>
+                                            <td
+                                                class="px-5 py-4 text-slate-900 dark:text-white font-bold text-right tabular-nums">
+                                                60,000</td>
+                                            <td class="px-5 py-4 text-center">
+                                                <span
+                                                    class="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-300">
+                                                    Future
+                                                </span>
+                                            </td>
+                                            <td class="px-5 py-4 text-right">
+                                                <button class="text-slate-400 hover:text-primary transition-colors">
+                                                    <span
+                                                        class="material-symbols-outlined text-[20px]">visibility</span>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- Additional Info Row -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div
+                                class="bg-surface-light dark:bg-surface-dark rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm p-5">
+                                <h3
+                                    class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-4">
+                                    Other Charges</h3>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between items-center text-sm">
+                                        <span class="text-slate-500 dark:text-slate-400">Security Deposit</span>
+                                        <span class="font-medium text-slate-900 dark:text-white">AED 12,000</span>
+                                    </div>
+                                    <div class="flex justify-between items-center text-sm">
+                                        <span class="text-slate-500 dark:text-slate-400">Agency Fee (5%)</span>
+                                        <span class="font-medium text-slate-900 dark:text-white">AED 12,000</span>
+                                    </div>
+                                    <div class="flex justify-between items-center text-sm">
+                                        <span class="text-slate-500 dark:text-slate-400">Ejari Registration</span>
+                                        <span class="font-medium text-slate-900 dark:text-white">AED 220</span>
+                                    </div>
+                                    <div class="h-px bg-slate-100 dark:bg-slate-800 my-2"></div>
+                                    <div class="flex justify-between items-center text-sm font-bold">
+                                        <span class="text-slate-700 dark:text-slate-200">Total Extras</span>
+                                        <span class="text-slate-900 dark:text-white">AED 24,220</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="bg-surface-light dark:bg-surface-dark rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm p-5 flex flex-col justify-between">
+                                <h3
+                                    class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-4">
+                                    Quick Actions</h3>
+                                <div class="grid grid-cols-2 gap-3">
+                                    <button
+                                        class="flex flex-col items-center justify-center gap-2 p-3 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors text-center">
+                                        <span class="material-symbols-outlined text-primary text-2xl">mail</span>
+                                        <span class="text-xs font-medium text-slate-700 dark:text-slate-300">Email
+                                            Tenant</span>
+                                    </button>
+                                    <button
+                                        class="flex flex-col items-center justify-center gap-2 p-3 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors text-center">
+                                        <span class="material-symbols-outlined text-primary text-2xl">sms</span>
+                                        <span class="text-xs font-medium text-slate-700 dark:text-slate-300">SMS
+                                            Reminder</span>
+                                    </button>
+                                    <button
+                                        class="flex flex-col items-center justify-center gap-2 p-3 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors text-center">
+                                        <span
+                                            class="material-symbols-outlined text-primary text-2xl">receipt_long</span>
+                                        <span class="text-xs font-medium text-slate-700 dark:text-slate-300">Generate
+                                            Receipt</span>
+                                    </button>
+                                    <button
+                                        class="flex flex-col items-center justify-center gap-2 p-3 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors text-center">
+                                        <span class="material-symbols-outlined text-primary text-2xl">build</span>
+                                        <span class="text-xs font-medium text-slate-700 dark:text-slate-300">Request
+                                            Repair</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <footer
+                    class="mt-8 text-center text-xs text-slate-400 py-6 border-t border-slate-200 dark:border-slate-800">
+                    © 2024 PropConnect. All rights reserved. • Property Management System v2.4.0
+                </footer>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

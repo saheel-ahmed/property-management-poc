@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Contracts List - PropConnect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="font-display bg-background-light dark:bg-background-dark text-[#111418] dark:text-white overflow-hidden">
+    <div class="flex h-screen w-full">
+        <!-- Sidebar -->
+        <aside
+            class="w-[280px] flex-shrink-0 flex flex-col bg-white dark:bg-[#101922] border-r border-[#e5e7eb] dark:border-gray-800 h-full">
+            <div class="p-6 pb-2">
+                <div class="flex gap-3 items-center mb-8">
+                    <div class="bg-center bg-no-repeat bg-cover rounded-full size-10 shrink-0"
+                        data-alt="Abstract blue geometric logo for property management"
+                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAbEmLq6dIxk4d4IYFKPbueW0Z167Odg3fhF0OBWs3ZDOwmNtqWM1GzJgGmPpK2EPacIozZBnl3WMJ8CU1Ke387Pa7LWbPCYUGgpuE3qJDD5Ar_DgwAGLH_ddVtPXwE3955leLvOlpYYqAcB7gOxuWyYa3_UCCBOEU1mqQGNdEwRPwH0y4HdHt6k7pDrSo6Gd__DgjjLRTSPc-dICLm-NDr-Cn_vm_jVYPpWpYD6fG9E3WI7GJjYPdYR7PR62ikI-LSJ2cM9wHAHq-i");'>
+                    </div>
+                    <div class="flex flex-col">
+                        <h1 class="text-[#111418] dark:text-white text-lg font-bold leading-tight">PropConnect</h1>
+                        <p class="text-[#617589] dark:text-gray-400 text-xs font-normal">Property Management</p>
+                    </div>
+                </div>
+                <nav class="flex flex-col gap-1">
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-background-light dark:hover:bg-gray-800 transition-colors group"
+                        href="#">
+                        <span
+                            class="material-symbols-outlined text-[#617589] dark:text-gray-400 group-hover:text-[#111418] dark:group-hover:text-white"
+                            style="font-size: 24px;">dashboard</span>
+                        <p
+                            class="text-[#617589] dark:text-gray-400 group-hover:text-[#111418] dark:group-hover:text-white text-sm font-medium">
+                            Dashboard</p>
+                    </a>
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-background-light dark:hover:bg-gray-800 transition-colors group"
+                        href="#">
+                        <span
+                            class="material-symbols-outlined text-[#617589] dark:text-gray-400 group-hover:text-[#111418] dark:group-hover:text-white"
+                            style="font-size: 24px;">domain</span>
+                        <p
+                            class="text-[#617589] dark:text-gray-400 group-hover:text-[#111418] dark:group-hover:text-white text-sm font-medium">
+                            Properties</p>
+                    </a>
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary" href="#">
+                        <span class="material-symbols-outlined text-primary" data-weight="fill"
+                            style="font-size: 24px;">description</span>
+                        <p class="text-primary text-sm font-bold">Contracts</p>
+                    </a>
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-background-light dark:hover:bg-gray-800 transition-colors group"
+                        href="#">
+                        <span
+                            class="material-symbols-outlined text-[#617589] dark:text-gray-400 group-hover:text-[#111418] dark:group-hover:text-white"
+                            style="font-size: 24px;">group</span>
+                        <p
+                            class="text-[#617589] dark:text-gray-400 group-hover:text-[#111418] dark:group-hover:text-white text-sm font-medium">
+                            Tenants</p>
+                    </a>
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-background-light dark:hover:bg-gray-800 transition-colors group"
+                        href="#">
+                        <span
+                            class="material-symbols-outlined text-[#617589] dark:text-gray-400 group-hover:text-[#111418] dark:group-hover:text-white"
+                            style="font-size: 24px;">bar_chart</span>
+                        <p
+                            class="text-[#617589] dark:text-gray-400 group-hover:text-[#111418] dark:group-hover:text-white text-sm font-medium">
+                            Reports</p>
+                    </a>
+                </nav>
+            </div>
+            <div class="mt-auto p-6 pt-2 border-t border-[#e5e7eb] dark:border-gray-800">
+                <nav class="flex flex-col gap-1 mb-6">
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-background-light dark:hover:bg-gray-800 transition-colors group"
+                        href="#">
+                        <span
+                            class="material-symbols-outlined text-[#617589] dark:text-gray-400 group-hover:text-[#111418] dark:group-hover:text-white"
+                            style="font-size: 24px;">settings</span>
+                        <p
+                            class="text-[#617589] dark:text-gray-400 group-hover:text-[#111418] dark:group-hover:text-white text-sm font-medium">
+                            Settings</p>
+                    </a>
+                </nav>
+                <div
+                    class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-background-light dark:hover:bg-gray-800 cursor-pointer">
+                    <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-9 border border-gray-200"
+                        data-alt="User profile picture of a man in a suit"
+                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCxyYMtsRVBCrD8-Mu7zjqbsFudbQAwcX3KXqK-4jqvilEUv9MyXAhbjzRT1dASrwPY-VhdYrw9m96H_V2B3r19W-ufSvbRjnURbtvOnSgHqCH9qUz9y4vwH2sqnyVteqhALvGdRUcuSD6YPXKxSQNJwoZJUKTIayoXyAl8PA37FNk89Xt-oeVUXM8XUXJp5p1dSrQj-tYkRiPrq-tEN-W4OEM3ebsiiXybb2Td8xF08ItsiJl1PTZGSqe30MHutawmGFiCQtZEH6o6");'>
+                    </div>
+                    <div class="flex flex-col overflow-hidden">
+                        <h3 class="text-[#111418] dark:text-white text-sm font-medium truncate">James Wilson</h3>
+                        <p class="text-[#617589] dark:text-gray-400 text-xs truncate">Manager</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        <!-- Main Content Area -->
+        <main class="flex-1 h-full overflow-y-auto bg-background-light dark:bg-background-dark">
+            <div class="flex flex-col w-full max-w-[1440px] mx-auto p-6 md:p-8 lg:p-10 gap-6">
+                <!-- Breadcrumbs & Header -->
+                <div class="flex flex-col gap-4">
+                    <div class="flex items-center gap-2 text-sm text-[#617589]">
+                        <a class="hover:text-primary transition-colors" href="#">Home</a>
+                        <span class="material-symbols-outlined text-xs">chevron_right</span>
+                        <span class="text-[#111418] dark:text-white font-medium">Contracts</span>
+                    </div>
+                    <div class="flex flex-wrap items-center justify-between gap-4">
+                        <h1 class="text-[#111418] dark:text-white text-3xl font-bold tracking-tight">Contracts</h1>
+                        <button
+                            class="flex items-center justify-center gap-2 bg-primary hover:bg-blue-600 text-white rounded-lg px-5 py-2.5 font-bold text-sm shadow-sm transition-all">
+                            <span class="material-symbols-outlined" style="font-size: 20px;">add</span>
+                            <span>New Contract</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- Filters & Toolbar -->
+                <div
+                    class="flex flex-col xl:flex-row gap-4 justify-between bg-white dark:bg-[#101922] p-4 rounded-xl border border-[#e5e7eb] dark:border-gray-800 shadow-sm">
+                    <div class="flex flex-col md:flex-row gap-3 flex-1">
+                        <!-- Search -->
+                        <div class="relative flex-1 min-w-[280px] max-w-lg">
+                            <span
+                                class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-[#617589]"
+                                style="font-size: 20px;">search</span>
+                            <input
+                                class="w-full pl-10 pr-4 py-2.5 bg-[#f6f7f8] dark:bg-gray-800 border-none rounded-lg text-sm text-[#111418] dark:text-white placeholder-[#617589] focus:ring-2 focus:ring-primary/50"
+                                placeholder="Search by Ejari No, Unit, or Tenant" type="text" />
+                        </div>
+                        <!-- Filters -->
+                        <div class="flex gap-2 overflow-x-auto pb-1 md:pb-0 no-scrollbar">
+                            <button
+                                class="flex items-center gap-2 px-3 py-2 bg-[#f6f7f8] dark:bg-gray-800 hover:bg-[#ebedef] dark:hover:bg-gray-700 rounded-lg text-sm font-medium text-[#111418] dark:text-white transition-colors whitespace-nowrap">
+                                <span>Status: All</span>
+                                <span class="material-symbols-outlined" style="font-size: 18px;">expand_more</span>
+                            </button>
+                            <button
+                                class="flex items-center gap-2 px-3 py-2 bg-[#f6f7f8] dark:bg-gray-800 hover:bg-[#ebedef] dark:hover:bg-gray-700 rounded-lg text-sm font-medium text-[#111418] dark:text-white transition-colors whitespace-nowrap">
+                                <span>Property: All</span>
+                                <span class="material-symbols-outlined" style="font-size: 18px;">expand_more</span>
+                            </button>
+                            <button
+                                class="flex items-center gap-2 px-3 py-2 bg-[#f6f7f8] dark:bg-gray-800 hover:bg-[#ebedef] dark:hover:bg-gray-700 rounded-lg text-sm font-medium text-[#111418] dark:text-white transition-colors whitespace-nowrap">
+                                <span>Date Range: All</span>
+                                <span class="material-symbols-outlined" style="font-size: 18px;">expand_more</span>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- View Toggle -->
+                    <div
+                        class="flex items-center gap-1 bg-[#f6f7f8] dark:bg-gray-800 p-1 rounded-lg self-start xl:self-center">
+                        <button class="p-1.5 rounded bg-white dark:bg-gray-700 shadow-sm text-primary">
+                            <span class="material-symbols-outlined block" style="font-size: 20px;">list</span>
+                        </button>
+                        <button
+                            class="p-1.5 rounded text-[#617589] hover:bg-white/50 dark:hover:bg-gray-700/50 transition-colors">
+                            <span class="material-symbols-outlined block" style="font-size: 20px;">grid_view</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- Data Table -->
+                <div
+                    class="bg-white dark:bg-[#101922] rounded-xl border border-[#e5e7eb] dark:border-gray-800 shadow-sm overflow-hidden flex flex-col flex-1 min-h-[500px]">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr
+                                    class="border-b border-[#e5e7eb] dark:border-gray-800 bg-[#f9fafb] dark:bg-gray-900/50">
+                                    <th
+                                        class="p-4 pl-6 text-xs font-semibold text-[#617589] uppercase tracking-wider w-[140px]">
+                                        Ejari No</th>
+                                    <th class="p-4 text-xs font-semibold text-[#617589] uppercase tracking-wider">Unit /
+                                        Property</th>
+                                    <th class="p-4 text-xs font-semibold text-[#617589] uppercase tracking-wider">Tenant
+                                    </th>
+                                    <th
+                                        class="p-4 text-xs font-semibold text-[#617589] uppercase tracking-wider text-right">
+                                        Annual Rent</th>
+                                    <th
+                                        class="p-4 text-xs font-semibold text-[#617589] uppercase tracking-wider w-[200px]">
+                                        Contract Period</th>
+                                    <th
+                                        class="p-4 text-xs font-semibold text-[#617589] uppercase tracking-wider w-[120px]">
+                                        Status</th>
+                                    <th
+                                        class="p-4 text-xs font-semibold text-[#617589] uppercase tracking-wider text-center w-[80px]">
+                                        Alerts</th>
+                                    <th
+                                        class="p-4 pr-6 text-xs font-semibold text-[#617589] uppercase tracking-wider w-[60px]">
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-[#e5e7eb] dark:divide-gray-800">
+                                <!-- Row 1 -->
+                                <tr class="group hover:bg-blue-50/50 dark:hover:bg-blue-900/10 transition-colors">
+                                    <td class="p-4 pl-6">
+                                        <a class="text-primary font-medium hover:underline text-sm"
+                                            href="#">12093485</a>
+                                    </td>
+                                    <td class="p-4">
+                                        <div class="flex flex-col">
+                                            <span class="text-[#111418] dark:text-white font-medium text-sm">Apt
+                                                402</span>
+                                            <span class="text-[#617589] text-xs">Marina Heights</span>
+                                        </div>
+                                    </td>
+                                    <td class="p-4">
+                                        <div class="flex items-center gap-3">
+                                            <div class="size-8 rounded-full bg-gray-200 bg-cover bg-center"
+                                                data-alt="Portrait of Ahmed Al-Fayed"
+                                                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD-hprW6NPfju_YJ_1SgLLt0A1cTVDK9OWeeEkBBjBhPsaAKXdPjNhyFUvsGraadi62Y_o5h9rvT7RJcF3SxxIGj8Bj556bo35QAcbExytBXjZ_abCUOJbbFrlFz8glRVnf4IxgNiEAQtMTgeC564V6yynL0urZ1bfQV3kixLVSOzEKC8CPtPvvpxiUrrfR1Wy7k1XKzF60oyrozEPVp1y-dowBDX4BREcWKJ_hy5BOsjYjJWzdQuZRPJ7KQJQxuzLU3-X7V6ni53bs");'>
+                                            </div>
+                                            <span class="text-[#111418] dark:text-white text-sm font-medium">Ahmed
+                                                Al-Fayed</span>
+                                        </div>
+                                    </td>
+                                    <td class="p-4 text-right">
+                                        <span class="text-[#111418] dark:text-white text-sm font-medium">AED
+                                            120,000</span>
+                                    </td>
+                                    <td class="p-4">
+                                        <div class="flex flex-col">
+                                            <span class="text-[#111418] dark:text-white text-sm">01 Jan 2024</span>
+                                            <span class="text-[#617589] text-xs">to 31 Dec 2024</span>
+                                        </div>
+                                    </td>
+                                    <td class="p-4">
+                                        <span
+                                            class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
+                                            Active
+                                        </span>
+                                    </td>
+                                    <td class="p-4 text-center">
+                                        <!-- No Alerts -->
+                                    </td>
+                                    <td class="p-4 pr-6">
+                                        <button
+                                            class="p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 text-[#617589] transition-colors">
+                                            <span class="material-symbols-outlined"
+                                                style="font-size: 20px;">more_horiz</span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <!-- Row 2 -->
+                                <tr class="group hover:bg-blue-50/50 dark:hover:bg-blue-900/10 transition-colors">
+                                    <td class="p-4 pl-6">
+                                        <a class="text-primary font-medium hover:underline text-sm"
+                                            href="#">12093486</a>
+                                    </td>
+                                    <td class="p-4">
+                                        <div class="flex flex-col">
+                                            <span class="text-[#111418] dark:text-white font-medium text-sm">Villa
+                                                12</span>
+                                            <span class="text-[#617589] text-xs">Arabian Ranches</span>
+                                        </div>
+                                    </td>
+                                    <td class="p-4">
+                                        <div class="flex items-center gap-3">
+                                            <div class="size-8 rounded-full bg-gray-200 bg-cover bg-center"
+                                                data-alt="Portrait of Sarah Jenkins"
+                                                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCJFVVYidcPJ-GD4Jg9qi2oUXer7STZCqg9P0BntkVqHg9NwI7vheMt5T0WHBnxFvAyS4OFtYFiKOaqqFXTjOjkZHGV_8Sy6KPXPobtisjJ_0fBKsVX4Wf4Sl5RPPZe_6j1BpIjY9lq9oJnvzxP8uG8MErN0nDmvDW1vVXZ3LtinXlxEixhis5A9iMj6WzprRQOU49d5GTcE3455VU5y0H2k9pYX6b1FJOSX5pIv3hXm8yEUBOQdB8upPp--NcP1tWu6FUmOv6FGK_Y");'>
+                                            </div>
+                                            <span class="text-[#111418] dark:text-white text-sm font-medium">Sarah
+                                                Jenkins</span>
+                                        </div>
+                                    </td>
+                                    <td class="p-4 text-right">
+                                        <span class="text-[#111418] dark:text-white text-sm font-medium">AED
+                                            240,000</span>
+                                    </td>
+                                    <td class="p-4">
+                                        <div class="flex flex-col">
+                                            <span class="text-[#111418] dark:text-white text-sm">15 Feb 2023</span>
+                                            <span class="text-[#617589] text-xs">to 14 Feb 2024</span>
+                                        </div>
+                                    </td>
+                                    <td class="p-4">
+                                        <span
+                                            class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400">
+                                            Renewal Due
+                                        </span>
+                                    </td>
+                                    <td class="p-4 text-center">
+                                        <div class="group/tooltip relative inline-block">
+                                            <span class="material-symbols-outlined text-amber-500 cursor-help"
+                                                style="font-size: 20px;">notifications_active</span>
+                                            <div
+                                                class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover/tooltip:block w-32 bg-gray-900 text-white text-xs rounded py-1 px-2 text-center shadow-lg z-10">
+                                                Expiring soon
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="p-4 pr-6">
+                                        <button
+                                            class="p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 text-[#617589] transition-colors">
+                                            <span class="material-symbols-outlined"
+                                                style="font-size: 20px;">more_horiz</span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <!-- Row 3 -->
+                                <tr class="group hover:bg-blue-50/50 dark:hover:bg-blue-900/10 transition-colors">
+                                    <td class="p-4 pl-6">
+                                        <a class="text-primary font-medium hover:underline text-sm"
+                                            href="#">12093489</a>
+                                    </td>
+                                    <td class="p-4">
+                                        <div class="flex flex-col">
+                                            <span class="text-[#111418] dark:text-white font-medium text-sm">Unit
+                                                801</span>
+                                            <span class="text-[#617589] text-xs">Downtown Views</span>
+                                        </div>
+                                    </td>
+                                    <td class="p-4">
+                                        <div class="flex items-center gap-3">
+                                            <div
+                                                class="size-8 rounded-full bg-primary/10 flex items-center justify-center text-primary text-xs font-bold">
+                                                MK
+                                            </div>
+                                            <span class="text-[#111418] dark:text-white text-sm font-medium">Mohammed
+                                                Khan</span>
+                                        </div>
+                                    </td>
+                                    <td class="p-4 text-right">
+                                        <span class="text-[#111418] dark:text-white text-sm font-medium">AED
+                                            95,000</span>
+                                    </td>
+                                    <td class="p-4">
+                                        <div class="flex flex-col">
+                                            <span class="text-[#111418] dark:text-white text-sm">01 Mar 2024</span>
+                                            <span class="text-[#617589] text-xs">to 28 Feb 2025</span>
+                                        </div>
+                                    </td>
+                                    <td class="p-4">
+                                        <span
+                                            class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400">
+                                            Draft
+                                        </span>
+                                    </td>
+                                    <td class="p-4 text-center">
+                                        <!-- No Alerts -->
+                                    </td>
+                                    <td class="p-4 pr-6">
+                                        <button
+                                            class="p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 text-[#617589] transition-colors">
+                                            <span class="material-symbols-outlined"
+                                                style="font-size: 20px;">more_horiz</span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <!-- Row 4 -->
+                                <tr class="group hover:bg-blue-50/50 dark:hover:bg-blue-900/10 transition-colors">
+                                    <td class="p-4 pl-6">
+                                        <a class="text-primary font-medium hover:underline text-sm"
+                                            href="#">12093422</a>
+                                    </td>
+                                    <td class="p-4">
+                                        <div class="flex flex-col">
+                                            <span class="text-[#111418] dark:text-white font-medium text-sm">Villa
+                                                45</span>
+                                            <span class="text-[#617589] text-xs">Palm Jumeirah</span>
+                                        </div>
+                                    </td>
+                                    <td class="p-4">
+                                        <div class="flex items-center gap-3">
+                                            <div class="size-8 rounded-full bg-gray-200 bg-cover bg-center"
+                                                data-alt="Portrait of Elena Rossi"
+                                                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBptsjLbl-DGuwdYYlr2673bQn8CIC91pHDzoUSTv3DWZ-ZONIKBnsWlXpHITOpIu15z2ao_SAexMqROtogtx3R9_aRc6dpbSqSRy5U_kQSmRha3gYVIRmK3wNDk6CjDAcPlv79BopGh_RgxKBTz-Mr5U4ct5PjB05LSQQcEvrA79mocfo7Xz4gSlLRF0QUZLMJ3hWrfywzsB-mTjnHF0B0j87Ill1XAXgjTu2Cxjz7ANUqlqB4CC1YSZD1OSqKLrQ0rSuVa-sUZnon");'>
+                                            </div>
+                                            <span class="text-[#111418] dark:text-white text-sm font-medium">Elena
+                                                Rossi</span>
+                                        </div>
+                                    </td>
+                                    <td class="p-4 text-right">
+                                        <span class="text-[#111418] dark:text-white text-sm font-medium">AED
+                                            450,000</span>
+                                    </td>
+                                    <td class="p-4">
+                                        <div class="flex flex-col">
+                                            <span class="text-[#111418] dark:text-white text-sm">10 Jun 2023</span>
+                                            <span class="text-[#617589] text-xs">to 09 Jun 2024</span>
+                                        </div>
+                                    </td>
+                                    <td class="p-4">
+                                        <span
+                                            class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400">
+                                            Terminated
+                                        </span>
+                                    </td>
+                                    <td class="p-4 text-center">
+                                        <div class="group/tooltip relative inline-block">
+                                            <span class="material-symbols-outlined text-red-500 cursor-help"
+                                                style="font-size: 20px;">error</span>
+                                            <div
+                                                class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover/tooltip:block w-32 bg-gray-900 text-white text-xs rounded py-1 px-2 text-center shadow-lg z-10">
+                                                Cheque Bounce
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="p-4 pr-6">
+                                        <button
+                                            class="p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 text-[#617589] transition-colors">
+                                            <span class="material-symbols-outlined"
+                                                style="font-size: 20px;">more_horiz</span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <!-- Row 5 -->
+                                <tr class="group hover:bg-blue-50/50 dark:hover:bg-blue-900/10 transition-colors">
+                                    <td class="p-4 pl-6">
+                                        <a class="text-primary font-medium hover:underline text-sm"
+                                            href="#">12093501</a>
+                                    </td>
+                                    <td class="p-4">
+                                        <div class="flex flex-col">
+                                            <span class="text-[#111418] dark:text-white font-medium text-sm">Office
+                                                204</span>
+                                            <span class="text-[#617589] text-xs">Business Bay Tower</span>
+                                        </div>
+                                    </td>
+                                    <td class="p-4">
+                                        <div class="flex items-center gap-3">
+                                            <div
+                                                class="size-8 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 text-xs font-bold">
+                                                TS
+                                            </div>
+                                            <span
+                                                class="text-[#111418] dark:text-white text-sm font-medium">TechSolutions
+                                                Ltd</span>
+                                        </div>
+                                    </td>
+                                    <td class="p-4 text-right">
+                                        <span class="text-[#111418] dark:text-white text-sm font-medium">AED
+                                            180,000</span>
+                                    </td>
+                                    <td class="p-4">
+                                        <div class="flex flex-col">
+                                            <span class="text-[#111418] dark:text-white text-sm">01 Apr 2024</span>
+                                            <span class="text-[#617589] text-xs">to 31 Mar 2025</span>
+                                        </div>
+                                    </td>
+                                    <td class="p-4">
+                                        <span
+                                            class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
+                                            Active
+                                        </span>
+                                    </td>
+                                    <td class="p-4 text-center">
+                                        <!-- No Alerts -->
+                                    </td>
+                                    <td class="p-4 pr-6">
+                                        <button
+                                            class="p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 text-[#617589] transition-colors">
+                                            <span class="material-symbols-outlined"
+                                                style="font-size: 20px;">more_horiz</span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Pagination -->
+                    <div
+                        class="mt-auto flex flex-col sm:flex-row items-center justify-between p-4 border-t border-[#e5e7eb] dark:border-gray-800 gap-4">
+                        <div class="flex items-center gap-2 text-sm text-[#617589]">
+                            <span>Rows per page:</span>
+                            <select
+                                class="bg-transparent border-none text-[#111418] dark:text-white font-medium focus:ring-0 cursor-pointer pr-8 py-0 pl-1">
+                                <option>10</option>
+                                <option>20</option>
+                                <option>50</option>
+                            </select>
+                        </div>
+                        <div class="flex items-center gap-4 text-sm text-[#617589]">
+                            <span>1-5 of 124</span>
+                            <div class="flex items-center gap-1">
+                                <button class="p-1 rounded hover:bg-gray-100 dark:hover:bg-gray-800 disabled:opacity-50"
+                                    disabled="">
+                                    <span class="material-symbols-outlined" style="font-size: 20px;">chevron_left</span>
+                                </button>
+                                <button class="p-1 rounded hover:bg-gray-100 dark:hover:bg-gray-800">
+                                    <span class="material-symbols-outlined"
+                                        style="font-size: 20px;">chevron_right</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

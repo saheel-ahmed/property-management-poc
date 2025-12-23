@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PropConnect - Property Management Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#111418] dark:text-white font-display overflow-x-hidden">
+<div class="flex min-h-screen w-full flex-row">
+<!-- Sidebar -->
+<aside class="flex w-64 flex-col justify-between border-r border-[#e5e7eb] dark:border-[#2e3e50] bg-white dark:bg-[#1a2632] p-4 hidden lg:flex fixed h-full z-10">
+<div class="flex flex-col gap-6">
+<div class="flex items-center gap-3 px-2">
+<div class="bg-primary/10 flex items-center justify-center rounded-lg size-10">
+<span class="material-symbols-outlined text-primary" style="font-size: 24px;">apartment</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-[#111418] dark:text-white text-lg font-bold leading-tight">PropConnect</h1>
+<p class="text-[#617589] dark:text-gray-400 text-xs font-normal">CRM</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary" href="dashboard.html">
+<span class="material-symbols-outlined" style="font-size: 24px;">dashboard</span>
+<p class="text-sm font-bold leading-normal">Dashboard</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#617589] dark:text-gray-400 hover:bg-[#f0f2f4] dark:hover:bg-[#2e3e50] transition-colors" href="properties-list.html">
+<span class="material-symbols-outlined" style="font-size: 24px;">domain</span>
+<p class="text-sm font-medium leading-normal">Properties</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#617589] dark:text-gray-400 hover:bg-[#f0f2f4] dark:hover:bg-[#2e3e50] transition-colors" href="unit-list.html">
+<span class="material-symbols-outlined" style="font-size: 24px;">home_work</span>
+<p class="text-sm font-medium leading-normal">Units</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#617589] dark:text-gray-400 hover:bg-[#f0f2f4] dark:hover:bg-[#2e3e50] transition-colors" href="manage-landlords.html">
+<span class="material-symbols-outlined" style="font-size: 24px;">person</span>
+<p class="text-sm font-medium leading-normal">Landlords</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#617589] dark:text-gray-400 hover:bg-[#f0f2f4] dark:hover:bg-[#2e3e50] transition-colors" href="manage-tentant.html">
+<span class="material-symbols-outlined" style="font-size: 24px;">group</span>
+<p class="text-sm font-medium leading-normal">Tenants</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#617589] dark:text-gray-400 hover:bg-[#f0f2f4] dark:hover:bg-[#2e3e50] transition-colors" href="contract-list.html">
+<span class="material-symbols-outlined" style="font-size: 24px;">description</span>
+<p class="text-sm font-medium leading-normal">Contracts</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#617589] dark:text-gray-400 hover:bg-[#f0f2f4] dark:hover:bg-[#2e3e50] transition-colors" href="reports-financials.html">
+<span class="material-symbols-outlined" style="font-size: 24px;">payments</span>
+<p class="text-sm font-medium leading-normal">Financials</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#617589] dark:text-gray-400 hover:bg-[#f0f2f4] dark:hover:bg-[#2e3e50] transition-colors" href="unit-list.html">
+<span class="material-symbols-outlined" style="font-size: 24px;">settings_suggest</span>
+<p class="text-sm font-medium leading-normal">Operations</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#617589] dark:text-gray-400 hover:bg-[#f0f2f4] dark:hover:bg-[#2e3e50] transition-colors" href="ejari-compliance.html">
+<span class="material-symbols-outlined" style="font-size: 24px;">verified_user</span>
+<p class="text-sm font-medium leading-normal">Compliance</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#617589] dark:text-gray-400 hover:bg-[#f0f2f4] dark:hover:bg-[#2e3e50] transition-colors" href="reports.html">
+<span class="material-symbols-outlined" style="font-size: 24px;">bar_chart</span>
+<p class="text-sm font-medium leading-normal">Reports</p>
+</a>
+</nav>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer hover:bg-[#f0f2f4] dark:hover:bg-[#2e3e50]">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-8 border border-gray-200" data-alt="User profile picture placeholder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC8Rrk0c9j8ELqD5ChRmBchc0kdrGW1bh5OPQDcuD6G3rYYKAW4hpzaMgBoR58RDB12N6GOtW8ZwT9UFMFM8E7Oc0ROxxvwsZWwXGyV7-Of1wEsOc-0w56RhMa6otPDxtTE9RIW6E1e_VR9Ex3nCSySQYUGMKRwsX1M27lJnSf5I5WKvfmG43It2skEXj9U7UOHhHQhGX5ghqxw9t-YNjeDzOEAVsjwwBpCNQS_PwnDKLBXlBSwwyNAYIWT8BJPZGL9pPvw6sA2hiVw");'></div>
+<div class="flex flex-col">
+<p class="text-[#111418] dark:text-white text-sm font-medium leading-none">Alex Morgan</p>
+<p class="text-[#617589] dark:text-gray-400 text-xs font-normal">Property Manager</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 lg:ml-64 min-h-screen flex flex-col">
+<!-- Top Navbar -->
+<header class="flex items-center justify-between bg-white dark:bg-[#1a2632] border-b border-[#e5e7eb] dark:border-[#2e3e50] px-6 py-4 sticky top-0 z-20">
+<div class="flex items-center gap-4">
+<div class="lg:hidden">
+<span class="material-symbols-outlined text-[#617589]" style="font-size: 24px;">menu</span>
+</div>
+<h2 class="text-[#111418] dark:text-white text-xl font-bold leading-tight hidden sm:block">Dashboard Overview</h2>
+</div>
+<div class="flex items-center gap-4 md:gap-6">
+<!-- Search -->
+<div class="hidden md:flex items-center bg-background-light dark:bg-[#2e3e50] rounded-lg px-3 py-2 w-64 lg:w-80">
+<span class="material-symbols-outlined text-[#617589] dark:text-gray-400" style="font-size: 20px;">search</span>
+<input class="bg-transparent border-none text-sm text-[#111418] dark:text-white placeholder-[#617589] focus:ring-0 w-full ml-2" placeholder="Search properties, units..." type="text"/>
+</div>
+<!-- Actions -->
+<div class="flex items-center gap-3">
+<button class="flex items-center justify-center size-10 rounded-full bg-background-light dark:bg-[#2e3e50] text-[#111418] dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 transition relative">
+<span class="material-symbols-outlined" style="font-size: 20px;">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-red-500 rounded-full border border-white dark:border-[#1a2632]"></span>
+</button>
+<button class="flex items-center gap-2 bg-primary hover:bg-blue-600 text-white text-sm font-bold px-4 py-2 rounded-lg transition shadow-sm">
+<span class="material-symbols-outlined" style="font-size: 18px;">add</span>
+<span class="hidden sm:inline">Add Property</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Content Area -->
+<div class="p-6 md:p-8 flex flex-col gap-8">
+<!-- Breadcrumbs -->
+<div class="flex items-center gap-2 text-sm">
+<a class="text-[#617589] dark:text-gray-400 hover:text-primary transition" href="dashboard.html">Home</a>
+<span class="text-[#617589] dark:text-gray-500">/</span>
+<span class="text-[#111418] dark:text-white font-medium">Dashboard</span>
+</div>
+<!-- KPI Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+<!-- Total Properties -->
+<div class="flex flex-col gap-4 rounded-xl bg-white dark:bg-[#1a2632] p-6 border border-[#e5e7eb] dark:border-[#2e3e50] shadow-sm hover:shadow-md transition">
+<div class="flex items-center justify-between">
+<div class="bg-blue-50 dark:bg-blue-900/20 p-2 rounded-lg">
+<span class="material-symbols-outlined text-primary" style="font-size: 24px;">domain</span>
+</div>
+<span class="flex items-center text-green-600 text-xs font-bold bg-green-50 dark:bg-green-900/20 px-2 py-1 rounded-full">
+<span class="material-symbols-outlined mr-1" style="font-size: 14px;">trending_up</span>
+                            +2
+                        </span>
+</div>
+<div>
+<p class="text-[#617589] dark:text-gray-400 text-sm font-medium">Total Properties</p>
+<h3 class="text-[#111418] dark:text-white text-3xl font-bold mt-1">142</h3>
+</div>
+</div>
+<!-- Occupied Units -->
+<div class="flex flex-col gap-4 rounded-xl bg-white dark:bg-[#1a2632] p-6 border border-[#e5e7eb] dark:border-[#2e3e50] shadow-sm hover:shadow-md transition">
+<div class="flex items-center justify-between">
+<div class="bg-blue-50 dark:bg-blue-900/20 p-2 rounded-lg">
+<span class="material-symbols-outlined text-primary" style="font-size: 24px;">person</span>
+</div>
+<span class="flex items-center text-green-600 text-xs font-bold bg-green-50 dark:bg-green-900/20 px-2 py-1 rounded-full">
+                             Healthy
+                        </span>
+</div>
+<div>
+<p class="text-[#617589] dark:text-gray-400 text-sm font-medium">Occupied Units</p>
+<h3 class="text-[#111418] dark:text-white text-3xl font-bold mt-1">92%</h3>
+<p class="text-[#617589] dark:text-gray-500 text-xs mt-1">1,150 / 1,250 Units</p>
+</div>
+</div>
+<!-- Vacant Units -->
+<div class="flex flex-col gap-4 rounded-xl bg-white dark:bg-[#1a2632] p-6 border border-[#e5e7eb] dark:border-[#2e3e50] shadow-sm hover:shadow-md transition">
+<div class="flex items-center justify-between">
+<div class="bg-orange-50 dark:bg-orange-900/20 p-2 rounded-lg">
+<span class="material-symbols-outlined text-orange-500" style="font-size: 24px;">door_open</span>
+</div>
+<span class="flex items-center text-orange-600 text-xs font-bold bg-orange-50 dark:bg-orange-900/20 px-2 py-1 rounded-full">
+                            Action req.
+                        </span>
+</div>
+<div>
+<p class="text-[#617589] dark:text-gray-400 text-sm font-medium">Vacant Units</p>
+<h3 class="text-[#111418] dark:text-white text-3xl font-bold mt-1">12</h3>
+<p class="text-[#617589] dark:text-gray-500 text-xs mt-1">High priority vacancies</p>
+</div>
+</div>
+<!-- Active Contracts -->
+<div class="flex flex-col gap-4 rounded-xl bg-white dark:bg-[#1a2632] p-6 border border-[#e5e7eb] dark:border-[#2e3e50] shadow-sm hover:shadow-md transition">
+<div class="flex items-center justify-between">
+<div class="bg-blue-50 dark:bg-blue-900/20 p-2 rounded-lg">
+<span class="material-symbols-outlined text-primary" style="font-size: 24px;">assignment</span>
+</div>
+<span class="flex items-center text-green-600 text-xs font-bold bg-green-50 dark:bg-green-900/20 px-2 py-1 rounded-full">
+<span class="material-symbols-outlined mr-1" style="font-size: 14px;">trending_up</span>
+                            +5%
+                        </span>
+</div>
+<div>
+<p class="text-[#617589] dark:text-gray-400 text-sm font-medium">Active Contracts Value</p>
+<h3 class="text-[#111418] dark:text-white text-3xl font-bold mt-1">$4.2M</h3>
+<p class="text-[#617589] dark:text-gray-500 text-xs mt-1">Annual Revenue Run Rate</p>
+</div>
+</div>
+</div>
+<!-- Main Layout Grid -->
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+<!-- Charts Section (Left 2/3) -->
+<div class="xl:col-span-2 flex flex-col gap-6">
+<!-- Rent Collection Chart -->
+<div class="rounded-xl bg-white dark:bg-[#1a2632] border border-[#e5e7eb] dark:border-[#2e3e50] p-6 shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<div>
+<h3 class="text-[#111418] dark:text-white text-lg font-bold">Rent Collection Trends</h3>
+<p class="text-[#617589] dark:text-gray-400 text-sm">Monthly collected revenue vs. targets</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="size-3 rounded-full bg-primary"></span>
+<span class="text-xs text-[#617589] dark:text-gray-400 mr-2">Collected</span>
+<span class="size-3 rounded-full bg-gray-200 dark:bg-gray-600"></span>
+<span class="text-xs text-[#617589] dark:text-gray-400">Projected</span>
+</div>
+</div>
+<!-- Custom CSS Bar Chart Implementation -->
+<div class="w-full h-64 flex items-end justify-between gap-2 sm:gap-4 px-2">
+<!-- Bar Group Item -->
+<div class="flex flex-col items-center gap-2 flex-1 h-full justify-end group cursor-pointer">
+<div class="w-full flex gap-1 h-full items-end justify-center">
+<div class="w-3 sm:w-6 bg-gray-200 dark:bg-gray-700 rounded-t-sm h-[45%] relative group-hover:opacity-80 transition-all"></div>
+<div class="w-3 sm:w-6 bg-primary rounded-t-sm h-[40%] relative group-hover:bg-blue-600 transition-all"></div>
+</div>
+<span class="text-xs font-medium text-[#617589] dark:text-gray-400">Jan</span>
+</div>
+<!-- Bar Group Item -->
+<div class="flex flex-col items-center gap-2 flex-1 h-full justify-end group cursor-pointer">
+<div class="w-full flex gap-1 h-full items-end justify-center">
+<div class="w-3 sm:w-6 bg-gray-200 dark:bg-gray-700 rounded-t-sm h-[50%] relative group-hover:opacity-80 transition-all"></div>
+<div class="w-3 sm:w-6 bg-primary rounded-t-sm h-[48%] relative group-hover:bg-blue-600 transition-all"></div>
+</div>
+<span class="text-xs font-medium text-[#617589] dark:text-gray-400">Feb</span>
+</div>
+<!-- Bar Group Item -->
+<div class="flex flex-col items-center gap-2 flex-1 h-full justify-end group cursor-pointer">
+<div class="w-full flex gap-1 h-full items-end justify-center">
+<div class="w-3 sm:w-6 bg-gray-200 dark:bg-gray-700 rounded-t-sm h-[55%] relative group-hover:opacity-80 transition-all"></div>
+<div class="w-3 sm:w-6 bg-primary rounded-t-sm h-[52%] relative group-hover:bg-blue-600 transition-all"></div>
+</div>
+<span class="text-xs font-medium text-[#617589] dark:text-gray-400">Mar</span>
+</div>
+<!-- Bar Group Item -->
+<div class="flex flex-col items-center gap-2 flex-1 h-full justify-end group cursor-pointer">
+<div class="w-full flex gap-1 h-full items-end justify-center">
+<div class="w-3 sm:w-6 bg-gray-200 dark:bg-gray-700 rounded-t-sm h-[60%] relative group-hover:opacity-80 transition-all"></div>
+<div class="w-3 sm:w-6 bg-primary rounded-t-sm h-[65%] relative group-hover:bg-blue-600 transition-all"></div>
+</div>
+<span class="text-xs font-medium text-[#617589] dark:text-gray-400">Apr</span>
+</div>
+<!-- Bar Group Item -->
+<div class="flex flex-col items-center gap-2 flex-1 h-full justify-end group cursor-pointer">
+<div class="w-full flex gap-1 h-full items-end justify-center">
+<div class="w-3 sm:w-6 bg-gray-200 dark:bg-gray-700 rounded-t-sm h-[58%] relative group-hover:opacity-80 transition-all"></div>
+<div class="w-3 sm:w-6 bg-primary rounded-t-sm h-[55%] relative group-hover:bg-blue-600 transition-all"></div>
+</div>
+<span class="text-xs font-medium text-[#617589] dark:text-gray-400">May</span>
+</div>
+<!-- Bar Group Item -->
+<div class="flex flex-col items-center gap-2 flex-1 h-full justify-end group cursor-pointer">
+<div class="w-full flex gap-1 h-full items-end justify-center">
+<div class="w-3 sm:w-6 bg-gray-200 dark:bg-gray-700 rounded-t-sm h-[70%] relative group-hover:opacity-80 transition-all"></div>
+<div class="w-3 sm:w-6 bg-primary rounded-t-sm h-[75%] relative group-hover:bg-blue-600 transition-all"></div>
+</div>
+<span class="text-xs font-medium text-[#617589] dark:text-gray-400">Jun</span>
+</div>
+</div>
+</div>
+<!-- Occupancy Line Chart Container -->
+<div class="rounded-xl bg-white dark:bg-[#1a2632] border border-[#e5e7eb] dark:border-[#2e3e50] p-6 shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<div>
+<h3 class="text-[#111418] dark:text-white text-lg font-bold">Occupancy Rate</h3>
+<p class="text-[#617589] dark:text-gray-400 text-sm">6-month trend analysis</p>
+</div>
+<div class="bg-gray-100 dark:bg-gray-800 rounded-lg p-1 flex">
+<button class="px-3 py-1 bg-white dark:bg-gray-600 rounded text-xs font-bold shadow-sm text-[#111418] dark:text-white">6M</button>
+<button class="px-3 py-1 text-xs font-medium text-[#617589] dark:text-gray-400 hover:text-primary">1Y</button>
+<button class="px-3 py-1 text-xs font-medium text-[#617589] dark:text-gray-400 hover:text-primary">ALL</button>
+</div>
+</div>
+<!-- Simplified SVG Line Chart -->
+<div class="w-full h-48 relative overflow-hidden">
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 800 200">
+<!-- Grid Lines -->
+<line stroke="#e5e7eb" stroke-dasharray="4" x1="0" x2="800" y1="150" y2="150"></line>
+<line stroke="#e5e7eb" stroke-dasharray="4" x1="0" x2="800" y1="100" y2="100"></line>
+<line stroke="#e5e7eb" stroke-dasharray="4" x1="0" x2="800" y1="50" y2="50"></line>
+<!-- Area Gradient -->
+<defs>
+<lineargradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#137fec" stop-opacity="0.2"></stop>
+<stop offset="100%" stop-color="#137fec" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path d="M0,120 C100,100 200,140 300,110 C400,80 500,90 600,60 C700,30 800,50 800,50 L800,200 L0,200 Z" fill="url(#chartGradient)"></path>
+<!-- The Line -->
+<path d="M0,120 C100,100 200,140 300,110 C400,80 500,90 600,60 C700,30 800,50 800,50" fill="none" stroke="#137fec" stroke-linecap="round" stroke-width="3"></path>
+<!-- Points -->
+<circle cx="0" cy="120" fill="#137fec" r="4"></circle>
+<circle cx="300" cy="110" fill="#137fec" r="4"></circle>
+<circle cx="600" cy="60" fill="#137fec" r="4"></circle>
+<circle cx="800" cy="50" fill="#137fec" r="4"></circle>
+</svg>
+</div>
+<div class="flex justify-between mt-2 px-2 text-xs text-[#617589] dark:text-gray-400 font-medium">
+<span>Jan</span>
+<span>Feb</span>
+<span>Mar</span>
+<span>Apr</span>
+<span>May</span>
+<span>Jun</span>
+</div>
+</div>
+</div>
+<!-- Alerts & Notifications (Right 1/3) -->
+<div class="flex flex-col gap-6">
+<div class="rounded-xl bg-white dark:bg-[#1a2632] border border-[#e5e7eb] dark:border-[#2e3e50] shadow-sm h-full">
+<div class="p-6 border-b border-[#e5e7eb] dark:border-[#2e3e50] flex items-center justify-between">
+<h3 class="text-[#111418] dark:text-white text-lg font-bold">Action Required</h3>
+<span class="bg-red-100 text-red-600 text-xs font-bold px-2 py-1 rounded-full">3 Critical</span>
+</div>
+<div class="flex flex-col divide-y divide-[#e5e7eb] dark:divide-[#2e3e50]">
+<!-- Alert Item: Critical -->
+<div class="p-4 hover:bg-[#f9fafb] dark:hover:bg-[#202d3b] transition group cursor-pointer border-l-4 border-red-500">
+<div class="flex justify-between items-start mb-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-red-500" style="font-size: 20px;">error</span>
+<p class="text-sm font-bold text-[#111418] dark:text-white">Bounced Cheque</p>
+</div>
+<span class="text-xs text-[#617589] dark:text-gray-400">2h ago</span>
+</div>
+<p class="text-sm text-[#617589] dark:text-gray-400 pl-7">Unit 402 - AED 45,000</p>
+<div class="pl-7 mt-2">
+<button class="text-xs font-bold text-primary hover:underline">View details</button>
+</div>
+</div>
+<!-- Alert Item: Warning -->
+<div class="p-4 hover:bg-[#f9fafb] dark:hover:bg-[#202d3b] transition group cursor-pointer border-l-4 border-yellow-500">
+<div class="flex justify-between items-start mb-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-yellow-500" style="font-size: 20px;">warning</span>
+<p class="text-sm font-bold text-[#111418] dark:text-white">Contract Expiries</p>
+</div>
+<span class="text-xs text-[#617589] dark:text-gray-400">Today</span>
+</div>
+<p class="text-sm text-[#617589] dark:text-gray-400 pl-7">3 Contracts expiring in &lt; 30 days</p>
+<div class="pl-7 mt-2">
+<button class="text-xs font-bold text-primary hover:underline">Review list</button>
+</div>
+</div>
+<!-- Alert Item: Info -->
+<div class="p-4 hover:bg-[#f9fafb] dark:hover:bg-[#202d3b] transition group cursor-pointer border-l-4 border-blue-400">
+<div class="flex justify-between items-start mb-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-blue-400" style="font-size: 20px;">info</span>
+<p class="text-sm font-bold text-[#111418] dark:text-white">Ejari Renewals</p>
+</div>
+<span class="text-xs text-[#617589] dark:text-gray-400">Yesterday</span>
+</div>
+<p class="text-sm text-[#617589] dark:text-gray-400 pl-7">5 renewals pending government submission</p>
+<div class="pl-7 mt-2">
+<button class="text-xs font-bold text-primary hover:underline">Open module</button>
+</div>
+</div>
+<!-- Alert Item: Standard -->
+<div class="p-4 hover:bg-[#f9fafb] dark:hover:bg-[#202d3b] transition group cursor-pointer border-l-4 border-gray-300 dark:border-gray-600">
+<div class="flex justify-between items-start mb-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-gray-400" style="font-size: 20px;">build</span>
+<p class="text-sm font-bold text-[#111418] dark:text-white">Maintenance Request</p>
+</div>
+<span class="text-xs text-[#617589] dark:text-gray-400">2d ago</span>
+</div>
+<p class="text-sm text-[#617589] dark:text-gray-400 pl-7">Villa 12 - AC Repair pending approval</p>
+<div class="pl-7 mt-2">
+<button class="text-xs font-bold text-primary hover:underline">Approve</button>
+</div>
+</div>
+</div>
+<div class="p-4 border-t border-[#e5e7eb] dark:border-[#2e3e50] text-center">
+<button class="text-sm font-bold text-primary hover:text-blue-700 transition">View All Notifications</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Activity Table (Optional Bonus Section for Density) -->
+<div class="rounded-xl bg-white dark:bg-[#1a2632] border border-[#e5e7eb] dark:border-[#2e3e50] shadow-sm overflow-hidden">
+<div class="px-6 py-4 border-b border-[#e5e7eb] dark:border-[#2e3e50] flex items-center justify-between bg-gray-50 dark:bg-[#202d3b]">
+<h3 class="text-[#111418] dark:text-white text-base font-bold">Recent Transactions</h3>
+<button class="text-sm text-primary font-bold hover:underline">View All</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-white dark:bg-[#1a2632] text-[#617589] dark:text-gray-400 text-xs uppercase tracking-wider border-b border-[#e5e7eb] dark:border-[#2e3e50]">
+<th class="px-6 py-4 font-bold">Property</th>
+<th class="px-6 py-4 font-bold">Type</th>
+<th class="px-6 py-4 font-bold">Date</th>
+<th class="px-6 py-4 font-bold">Amount</th>
+<th class="px-6 py-4 font-bold">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#e5e7eb] dark:divide-[#2e3e50]">
+<tr class="hover:bg-gray-50 dark:hover:bg-[#202d3b] transition">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded bg-gray-200 dark:bg-gray-700 bg-cover bg-center" data-alt="Modern apartment building exterior" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAkv6XU6RoCNjOLeN4-IcqUGKmSSsCxLOfswe3Bsc1QKqt4pGftR_wSJ_96nxyA-HABOC9MPQSbkz1xbxmHW0naqjD0tvHI6QyqcVMgUR4RcZZoo_lXHsBdlPjuxWv-wcWOmLCJkNKGQLvFerWs9429TDO47Lmmo76bqzuqO-0FyiGh8dhRhcCE86HNsQPdwBqTCdC_gh-JPoFfH5THq8yPcroqaLXrK-ekrvi8dA0hZvcwyFbDdTwWMXhTK5suzV8AUKQxY1_H2BXx")'></div>
+<span class="text-sm font-bold text-[#111418] dark:text-white">Marina Heights #304</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-[#617589] dark:text-gray-400">Rent Payment</td>
+<td class="px-6 py-4 text-sm text-[#617589] dark:text-gray-400">Oct 24, 2023</td>
+<td class="px-6 py-4 text-sm font-bold text-[#111418] dark:text-white">$2,400</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+                                        Completed
+                                    </span>
+</td>
+</tr>
+<tr class="hover:bg-gray-50 dark:hover:bg-[#202d3b] transition">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded bg-gray-200 dark:bg-gray-700 bg-cover bg-center" data-alt="Suburban house front view" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDEzNZ6pjkr9N13CASIuEE0oaeyasOGoKx4Ssz7U3CxE7ncn0jma60zn-MtQTvvPhaf5OFvXjWUlK1cC7m8aJp5vxv1wVh5ryFEGNcBMMTZuZLYKRwzEWiICiJ9s3_prRvEepFqEUuiVd8ikTqMSOCTfYRs5NrZ68YUgPFs6SuJoJgYgOiX4qlf6fxiZ2qJ7PT7z9uqDHximYZKMj1N_yDOtr8NKFpevRr0pVCOAJ3qQ8d8ns8IzFSjTYkaa9gzHbSxb2L8P-fEVZ3h")'></div>
+<span class="text-sm font-bold text-[#111418] dark:text-white">Palm Villa 12</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-[#617589] dark:text-gray-400">Maintenance Fee</td>
+<td class="px-6 py-4 text-sm text-[#617589] dark:text-gray-400">Oct 23, 2023</td>
+<td class="px-6 py-4 text-sm font-bold text-[#111418] dark:text-white">$150</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200">
+                                        Pending
+                                    </span>
+</td>
+</tr>
+<tr class="hover:bg-gray-50 dark:hover:bg-[#202d3b] transition">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded bg-gray-200 dark:bg-gray-700 bg-cover bg-center" data-alt="City skyscraper view" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCXT2iVxEZJqfUUrb60Sq8X7I4TIbqSRASk4cKNgQR3rwS6eBj34Dzh7a7kcaamU2FQWlKKfj7IosUfE61P6-DkHShU6t7EhMMUIbhLPDEggfuf4vtVvGxARvEJPbp_utOLZZqbHl0srbgNtZhfUAFGz8hnCnnr5XSAqIhl48dPU9SFNodJn2pPcZZHpB23KiqlpgRg22tpTcndkcuQr4n97EDpmMRs7klWFnUptS5W_gKwyfoqWoNGzfV92K4iATZi-Nw4H2XkeIOz")'></div>
+<span class="text-sm font-bold text-[#111418] dark:text-white">Downtown Loft 5B</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-[#617589] dark:text-gray-400">Security Deposit</td>
+<td class="px-6 py-4 text-sm text-[#617589] dark:text-gray-400">Oct 22, 2023</td>
+<td class="px-6 py-4 text-sm font-bold text-[#111418] dark:text-white">$1,200</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+                                        Completed
+                                    </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

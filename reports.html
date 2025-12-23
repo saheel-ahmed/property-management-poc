@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Reports Dashboard - PropConnect</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet" />
+    <!-- Material Symbols -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Theme Configuration -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1a222c",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .material-symbols-filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-[#111418] dark:text-gray-100 font-display transition-colors duration-200">
+    <div class="flex h-screen w-full overflow-hidden">
+        <!-- Side Navigation -->
+        <aside
+            class="flex w-64 flex-col border-r border-[#e5e7eb] dark:border-gray-800 bg-surface-light dark:bg-surface-dark flex-shrink-0">
+            <div class="flex h-full flex-col justify-between p-4">
+                <div class="flex flex-col gap-4">
+                    <!-- Brand -->
+                    <div class="flex items-center gap-3 px-2 py-2">
+                        <div class="bg-center bg-no-repeat bg-cover rounded-lg size-10 flex items-center justify-center bg-primary text-white"
+                            data-alt="PropConnect Logo">
+                            <span class="material-symbols-outlined text-2xl">apartment</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <h1 class="text-base font-bold leading-normal">PropConnect</h1>
+                            <p class="text-[#617589] dark:text-gray-400 text-xs font-normal leading-normal">Management
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Menu Items -->
+                    <nav class="flex flex-col gap-2 mt-2">
+                        <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-[#111418] dark:text-gray-200 hover:bg-background-light dark:hover:bg-gray-800 transition-colors group"
+                            href="#">
+                            <span
+                                class="material-symbols-outlined text-gray-500 group-hover:text-primary dark:group-hover:text-primary">dashboard</span>
+                            <span class="text-sm font-medium">Dashboard</span>
+                        </a>
+                        <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-[#111418] dark:text-gray-200 hover:bg-background-light dark:hover:bg-gray-800 transition-colors group"
+                            href="#">
+                            <span
+                                class="material-symbols-outlined text-gray-500 group-hover:text-primary dark:group-hover:text-primary">apartment</span>
+                            <span class="text-sm font-medium">Properties</span>
+                        </a>
+                        <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-[#111418] dark:text-gray-200 hover:bg-background-light dark:hover:bg-gray-800 transition-colors group"
+                            href="#">
+                            <span
+                                class="material-symbols-outlined text-gray-500 group-hover:text-primary dark:group-hover:text-primary">group</span>
+                            <span class="text-sm font-medium">Tenants</span>
+                        </a>
+                        <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-[#111418] dark:text-gray-200 hover:bg-background-light dark:hover:bg-gray-800 transition-colors group"
+                            href="#">
+                            <span
+                                class="material-symbols-outlined text-gray-500 group-hover:text-primary dark:group-hover:text-primary">build</span>
+                            <span class="text-sm font-medium">Maintenance</span>
+                        </a>
+                        <!-- Active Item -->
+                        <a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 text-primary dark:text-primary transition-colors"
+                            href="#">
+                            <span class="material-symbols-outlined fill-current">analytics</span>
+                            <span class="text-sm font-bold">Reports</span>
+                        </a>
+                    </nav>
+                </div>
+                <!-- Bottom Actions -->
+                <div class="flex flex-col gap-1 border-t border-[#e5e7eb] dark:border-gray-800 pt-4">
+                    <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-[#111418] dark:text-gray-200 hover:bg-background-light dark:hover:bg-gray-800 transition-colors group"
+                        href="#">
+                        <span class="material-symbols-outlined text-gray-500 group-hover:text-primary">settings</span>
+                        <span class="text-sm font-medium">Settings</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-[#111418] dark:text-gray-200 hover:bg-background-light dark:hover:bg-gray-800 transition-colors group"
+                        href="#">
+                        <span class="material-symbols-outlined text-gray-500 group-hover:text-red-500">logout</span>
+                        <span class="text-sm font-medium">Log Out</span>
+                    </a>
+                </div>
+            </div>
+        </aside>
+        <!-- Main Content -->
+        <main class="flex-1 flex flex-col h-full overflow-hidden relative">
+            <!-- Scrollable Area -->
+            <div class="flex-1 overflow-y-auto p-4 md:p-8 lg:px-12">
+                <div class="max-w-[1200px] mx-auto flex flex-col gap-8 pb-10">
+                    <!-- Breadcrumbs & Header -->
+                    <div class="flex flex-col gap-4">
+                        <div class="flex flex-wrap gap-2 items-center text-sm">
+                            <a class="text-[#617589] dark:text-gray-400 font-medium hover:text-primary"
+                                href="#">Home</a>
+                            <span class="text-[#617589] dark:text-gray-400">/</span>
+                            <span class="text-[#111418] dark:text-gray-100 font-semibold">Reports</span>
+                        </div>
+                        <div class="flex flex-wrap justify-between items-end gap-4">
+                            <div class="flex flex-col gap-1">
+                                <h1
+                                    class="text-[#111418] dark:text-white text-3xl md:text-4xl font-extrabold tracking-tight">
+                                    Reports Center</h1>
+                                <p class="text-[#617589] dark:text-gray-400 text-base font-normal max-w-2xl">Generate
+                                    comprehensive insights, track financial performance, and manage property analytics.
+                                </p>
+                            </div>
+                            <button
+                                class="flex items-center gap-2 bg-primary hover:bg-blue-600 text-white px-4 py-2.5 rounded-lg text-sm font-medium transition-colors shadow-sm">
+                                <span class="material-symbols-outlined text-lg">add_chart</span>
+                                Create Custom Report
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Filters Bar -->
+                    <div
+                        class="flex flex-wrap items-center gap-3 p-4 bg-surface-light dark:bg-surface-dark rounded-xl border border-[#e5e7eb] dark:border-gray-800 shadow-sm">
+                        <div class="flex items-center gap-2 text-sm font-medium text-gray-500 dark:text-gray-400 mr-2">
+                            <span class="material-symbols-outlined text-xl">filter_list</span>
+                            Filters:
+                        </div>
+                        <!-- Date Filter -->
+                        <div class="relative group">
+                            <button
+                                class="flex h-9 items-center justify-center gap-x-2 rounded-lg bg-background-light dark:bg-gray-800 border border-transparent hover:border-gray-300 dark:hover:border-gray-600 px-3 transition-all">
+                                <span
+                                    class="material-symbols-outlined text-gray-500 dark:text-gray-400 text-[20px]">calendar_today</span>
+                                <span class="text-[#111418] dark:text-gray-200 text-sm font-medium">This Month</span>
+                                <span
+                                    class="material-symbols-outlined text-gray-500 dark:text-gray-400 text-[20px]">expand_more</span>
+                            </button>
+                        </div>
+                        <!-- Property Filter -->
+                        <div class="relative group">
+                            <button
+                                class="flex h-9 items-center justify-center gap-x-2 rounded-lg bg-background-light dark:bg-gray-800 border border-transparent hover:border-gray-300 dark:hover:border-gray-600 px-3 transition-all">
+                                <span
+                                    class="material-symbols-outlined text-gray-500 dark:text-gray-400 text-[20px]">apartment</span>
+                                <span class="text-[#111418] dark:text-gray-200 text-sm font-medium">All
+                                    Properties</span>
+                                <span
+                                    class="material-symbols-outlined text-gray-500 dark:text-gray-400 text-[20px]">expand_more</span>
+                            </button>
+                        </div>
+                        <!-- Owner Filter -->
+                        <div class="relative group">
+                            <button
+                                class="flex h-9 items-center justify-center gap-x-2 rounded-lg bg-background-light dark:bg-gray-800 border border-transparent hover:border-gray-300 dark:hover:border-gray-600 px-3 transition-all">
+                                <span
+                                    class="material-symbols-outlined text-gray-500 dark:text-gray-400 text-[20px]">person</span>
+                                <span class="text-[#111418] dark:text-gray-200 text-sm font-medium">All Landlords</span>
+                                <span
+                                    class="material-symbols-outlined text-gray-500 dark:text-gray-400 text-[20px]">expand_more</span>
+                            </button>
+                        </div>
+                        <div class="flex-1"></div>
+                        <button class="text-primary hover:text-blue-700 text-sm font-medium px-2">Reset Filters</button>
+                    </div>
+                    <!-- Report Categories -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <!-- Financial Reports -->
+                        <div
+                            class="bg-surface-light dark:bg-surface-dark rounded-xl border border-[#e5e7eb] dark:border-gray-800 shadow-sm flex flex-col overflow-hidden">
+                            <div
+                                class="p-4 border-b border-[#e5e7eb] dark:border-gray-800 flex justify-between items-center bg-gray-50 dark:bg-gray-800/50">
+                                <div class="flex items-center gap-3">
+                                    <div
+                                        class="bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 p-2 rounded-lg">
+                                        <span class="material-symbols-outlined">attach_money</span>
+                                    </div>
+                                    <h2 class="text-lg font-bold text-[#111418] dark:text-white">Financial Reports</h2>
+                                </div>
+                            </div>
+                            <div class="divide-y divide-[#e5e7eb] dark:divide-gray-800">
+                                <!-- Report Item -->
+                                <div
+                                    class="p-4 flex items-center justify-between gap-4 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+                                    <div class="flex flex-col gap-1">
+                                        <p class="text-[#111418] dark:text-gray-100 text-sm font-bold">Rent Roll</p>
+                                        <p class="text-[#617589] dark:text-gray-400 text-xs leading-normal">Summary of
+                                            all active leases, rent amounts, and payment status.</p>
+                                    </div>
+                                    <button
+                                        class="shrink-0 flex items-center justify-center size-8 rounded-full border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary text-gray-500 transition-colors"
+                                        title="Generate Report">
+                                        <span class="material-symbols-outlined text-lg">play_arrow</span>
+                                    </button>
+                                </div>
+                                <!-- Report Item -->
+                                <div
+                                    class="p-4 flex items-center justify-between gap-4 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+                                    <div class="flex flex-col gap-1">
+                                        <p class="text-[#111418] dark:text-gray-100 text-sm font-bold">Income Statement
+                                        </p>
+                                        <p class="text-[#617589] dark:text-gray-400 text-xs leading-normal">Detailed
+                                            revenue versus expenses per property breakdown.</p>
+                                    </div>
+                                    <button
+                                        class="shrink-0 flex items-center justify-center size-8 rounded-full border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary text-gray-500 transition-colors"
+                                        title="Generate Report">
+                                        <span class="material-symbols-outlined text-lg">play_arrow</span>
+                                    </button>
+                                </div>
+                                <!-- Report Item -->
+                                <div
+                                    class="p-4 flex items-center justify-between gap-4 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+                                    <div class="flex flex-col gap-1">
+                                        <p class="text-[#111418] dark:text-gray-100 text-sm font-bold">Aged Receivables
+                                        </p>
+                                        <p class="text-[#617589] dark:text-gray-400 text-xs leading-normal">Outstanding
+                                            balances grouped by number of days overdue.</p>
+                                    </div>
+                                    <button
+                                        class="shrink-0 flex items-center justify-center size-8 rounded-full border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary text-gray-500 transition-colors"
+                                        title="Generate Report">
+                                        <span class="material-symbols-outlined text-lg">play_arrow</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Operational Reports -->
+                        <div
+                            class="bg-surface-light dark:bg-surface-dark rounded-xl border border-[#e5e7eb] dark:border-gray-800 shadow-sm flex flex-col overflow-hidden">
+                            <div
+                                class="p-4 border-b border-[#e5e7eb] dark:border-gray-800 flex justify-between items-center bg-gray-50 dark:bg-gray-800/50">
+                                <div class="flex items-center gap-3">
+                                    <div
+                                        class="bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 p-2 rounded-lg">
+                                        <span class="material-symbols-outlined">pie_chart</span>
+                                    </div>
+                                    <h2 class="text-lg font-bold text-[#111418] dark:text-white">Occupancy &amp;
+                                        Operations</h2>
+                                </div>
+                            </div>
+                            <div class="divide-y divide-[#e5e7eb] dark:divide-gray-800">
+                                <!-- Report Item -->
+                                <div
+                                    class="p-4 flex items-center justify-between gap-4 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+                                    <div class="flex flex-col gap-1">
+                                        <p class="text-[#111418] dark:text-gray-100 text-sm font-bold">Occupancy Rate
+                                        </p>
+                                        <p class="text-[#617589] dark:text-gray-400 text-xs leading-normal">Analysis of
+                                            vacant vs occupied units across portfolios.</p>
+                                    </div>
+                                    <button
+                                        class="shrink-0 flex items-center justify-center size-8 rounded-full border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary text-gray-500 transition-colors"
+                                        title="Generate Report">
+                                        <span class="material-symbols-outlined text-lg">play_arrow</span>
+                                    </button>
+                                </div>
+                                <!-- Report Item -->
+                                <div
+                                    class="p-4 flex items-center justify-between gap-4 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+                                    <div class="flex flex-col gap-1">
+                                        <p class="text-[#111418] dark:text-gray-100 text-sm font-bold">Lease Expiry</p>
+                                        <p class="text-[#617589] dark:text-gray-400 text-xs leading-normal">Upcoming
+                                            lease expirations in the next 30, 60, or 90 days.</p>
+                                    </div>
+                                    <button
+                                        class="shrink-0 flex items-center justify-center size-8 rounded-full border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary text-gray-500 transition-colors"
+                                        title="Generate Report">
+                                        <span class="material-symbols-outlined text-lg">play_arrow</span>
+                                    </button>
+                                </div>
+                                <!-- Report Item -->
+                                <div
+                                    class="p-4 flex items-center justify-between gap-4 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+                                    <div class="flex flex-col gap-1">
+                                        <p class="text-[#111418] dark:text-gray-100 text-sm font-bold">Tenant Turnover
+                                        </p>
+                                        <p class="text-[#617589] dark:text-gray-400 text-xs leading-normal">Historical
+                                            data on move-ins and move-outs.</p>
+                                    </div>
+                                    <button
+                                        class="shrink-0 flex items-center justify-center size-8 rounded-full border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary text-gray-500 transition-colors"
+                                        title="Generate Report">
+                                        <span class="material-symbols-outlined text-lg">play_arrow</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Maintenance Reports -->
+                        <div
+                            class="lg:col-span-2 bg-surface-light dark:bg-surface-dark rounded-xl border border-[#e5e7eb] dark:border-gray-800 shadow-sm flex flex-col overflow-hidden">
+                            <div
+                                class="p-4 border-b border-[#e5e7eb] dark:border-gray-800 flex justify-between items-center bg-gray-50 dark:bg-gray-800/50">
+                                <div class="flex items-center gap-3">
+                                    <div
+                                        class="bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 p-2 rounded-lg">
+                                        <span class="material-symbols-outlined">handyman</span>
+                                    </div>
+                                    <h2 class="text-lg font-bold text-[#111418] dark:text-white">Maintenance Reports
+                                    </h2>
+                                </div>
+                            </div>
+                            <div
+                                class="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-[#e5e7eb] dark:divide-gray-800">
+                                <!-- Report Item -->
+                                <div
+                                    class="p-4 flex items-center justify-between gap-4 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+                                    <div class="flex flex-col gap-1">
+                                        <p class="text-[#111418] dark:text-gray-100 text-sm font-bold">Open Work Orders
+                                        </p>
+                                        <p class="text-[#617589] dark:text-gray-400 text-xs leading-normal">Current
+                                            status of all pending maintenance requests.</p>
+                                    </div>
+                                    <button
+                                        class="shrink-0 flex items-center justify-center size-8 rounded-full border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary text-gray-500 transition-colors"
+                                        title="Generate Report">
+                                        <span class="material-symbols-outlined text-lg">play_arrow</span>
+                                    </button>
+                                </div>
+                                <!-- Report Item -->
+                                <div
+                                    class="p-4 flex items-center justify-between gap-4 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+                                    <div class="flex flex-col gap-1">
+                                        <p class="text-[#111418] dark:text-gray-100 text-sm font-bold">Vendor Costs
+                                            Analysis</p>
+                                        <p class="text-[#617589] dark:text-gray-400 text-xs leading-normal">Total
+                                            maintenance spend broken down by service provider.</p>
+                                    </div>
+                                    <button
+                                        class="shrink-0 flex items-center justify-center size-8 rounded-full border border-gray-200 dark:border-gray-700 hover:bg-primary hover:text-white hover:border-primary text-gray-500 transition-colors"
+                                        title="Generate Report">
+                                        <span class="material-symbols-outlined text-lg">play_arrow</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Recent Generated Reports Section -->
+                    <div class="flex flex-col gap-4">
+                        <div class="flex items-center justify-between">
+                            <h2 class="text-[#111418] dark:text-white text-xl font-bold leading-tight">Recently
+                                Generated</h2>
+                            <a class="text-sm font-medium text-primary hover:text-blue-700" href="#">View All
+                                History</a>
+                        </div>
+                        <div
+                            class="bg-surface-light dark:bg-surface-dark rounded-xl border border-[#e5e7eb] dark:border-gray-800 shadow-sm overflow-hidden">
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left border-collapse">
+                                    <thead
+                                        class="bg-gray-50 dark:bg-gray-800/50 text-[#617589] dark:text-gray-400 text-xs font-semibold uppercase tracking-wider">
+                                        <tr>
+                                            <th class="px-6 py-4">Report Name</th>
+                                            <th class="px-6 py-4">Property</th>
+                                            <th class="px-6 py-4">Date Generated</th>
+                                            <th class="px-6 py-4">Status</th>
+                                            <th class="px-6 py-4 text-right">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-[#e5e7eb] dark:divide-gray-800 text-sm">
+                                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+                                            <td class="px-6 py-4 font-medium text-[#111418] dark:text-gray-200">
+                                                <div class="flex items-center gap-2">
+                                                    <span
+                                                        class="material-symbols-outlined text-gray-400 text-lg">description</span>
+                                                    Rent Roll - Oct 2023
+                                                </div>
+                                            </td>
+                                            <td class="px-6 py-4 text-[#617589] dark:text-gray-400">Marina Heights</td>
+                                            <td class="px-6 py-4 text-[#617589] dark:text-gray-400">Oct 24, 2023 10:30
+                                                AM</td>
+                                            <td class="px-6 py-4">
+                                                <span
+                                                    class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">
+                                                    <span class="size-1.5 rounded-full bg-green-500"></span>
+                                                    Ready
+                                                </span>
+                                            </td>
+                                            <td class="px-6 py-4 text-right">
+                                                <button
+                                                    class="text-primary hover:text-blue-700 font-medium inline-flex items-center gap-1">
+                                                    Download
+                                                    <span class="material-symbols-outlined text-lg">download</span>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+                                            <td class="px-6 py-4 font-medium text-[#111418] dark:text-gray-200">
+                                                <div class="flex items-center gap-2">
+                                                    <span
+                                                        class="material-symbols-outlined text-gray-400 text-lg">description</span>
+                                                    Occupancy Rate Q3
+                                                </div>
+                                            </td>
+                                            <td class="px-6 py-4 text-[#617589] dark:text-gray-400">All Portfolios</td>
+                                            <td class="px-6 py-4 text-[#617589] dark:text-gray-400">Oct 23, 2023 02:15
+                                                PM</td>
+                                            <td class="px-6 py-4">
+                                                <span
+                                                    class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">
+                                                    <span class="size-1.5 rounded-full bg-green-500"></span>
+                                                    Ready
+                                                </span>
+                                            </td>
+                                            <td class="px-6 py-4 text-right">
+                                                <button
+                                                    class="text-primary hover:text-blue-700 font-medium inline-flex items-center gap-1">
+                                                    Download
+                                                    <span class="material-symbols-outlined text-lg">download</span>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+                                            <td class="px-6 py-4 font-medium text-[#111418] dark:text-gray-200">
+                                                <div class="flex items-center gap-2">
+                                                    <span
+                                                        class="material-symbols-outlined text-gray-400 text-lg">description</span>
+                                                    Vendor Costs (YTD)
+                                                </div>
+                                            </td>
+                                            <td class="px-6 py-4 text-[#617589] dark:text-gray-400">Downtown Villas</td>
+                                            <td class="px-6 py-4 text-[#617589] dark:text-gray-400">Oct 23, 2023 11:00
+                                                AM</td>
+                                            <td class="px-6 py-4">
+                                                <span
+                                                    class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400">
+                                                    <span
+                                                        class="size-1.5 rounded-full bg-yellow-500 animate-pulse"></span>
+                                                    Processing
+                                                </span>
+                                            </td>
+                                            <td class="px-6 py-4 text-right">
+                                                <span
+                                                    class="text-gray-400 dark:text-gray-600 font-medium cursor-not-allowed">
+                                                    Generating...
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

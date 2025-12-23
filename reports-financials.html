@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Financials Overview - PropConnect</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet" />
+    <!-- Material Symbols -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Theme Configuration -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-[#111418] font-display antialiased overflow-hidden">
+    <div class="flex h-screen w-full">
+        <!-- Side Navigation -->
+        <aside
+            class="flex w-[260px] flex-col border-r border-[#dbe0e6] bg-white dark:bg-[#111418] shrink-0 h-full overflow-y-auto">
+            <div class="flex flex-col gap-4 p-4 min-h-full justify-between">
+                <div>
+                    <!-- Profile / Logo Area -->
+                    <div class="flex items-center gap-3 px-2 py-4 mb-4">
+                        <div class="bg-center bg-no-repeat bg-cover rounded-full size-10 bg-[#eef4ff] text-primary flex items-center justify-center font-bold text-xl"
+                            data-alt="PropConnect Logo placeholder with building icon">
+                            <span class="material-symbols-outlined">domain</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <h1 class="text-[#111418] dark:text-white text-base font-bold leading-normal">PropConnect
+                            </h1>
+                            <p class="text-[#617589] text-xs font-normal leading-normal">Admin Portal</p>
+                        </div>
+                    </div>
+                    <!-- Navigation Links -->
+                    <div class="flex flex-col gap-2">
+                        <a class="flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-background-light dark:hover:bg-gray-800 transition-colors group"
+                            href="#">
+                            <span
+                                class="material-symbols-outlined text-[#617589] group-hover:text-[#111418] dark:text-gray-400 dark:group-hover:text-white">grid_view</span>
+                            <p class="text-[#111418] dark:text-white text-sm font-medium leading-normal">Dashboard</p>
+                        </a>
+                        <a class="flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-background-light dark:hover:bg-gray-800 transition-colors group"
+                            href="#">
+                            <span
+                                class="material-symbols-outlined text-[#617589] group-hover:text-[#111418] dark:text-gray-400 dark:group-hover:text-white">apartment</span>
+                            <p class="text-[#111418] dark:text-white text-sm font-medium leading-normal">Properties</p>
+                        </a>
+                        <a class="flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-background-light dark:hover:bg-gray-800 transition-colors group"
+                            href="#">
+                            <span
+                                class="material-symbols-outlined text-[#617589] group-hover:text-[#111418] dark:text-gray-400 dark:group-hover:text-white">group</span>
+                            <p class="text-[#111418] dark:text-white text-sm font-medium leading-normal">Tenants</p>
+                        </a>
+                        <!-- Active State -->
+                        <a class="flex items-center gap-3 px-3 py-3 rounded-lg bg-primary/10 dark:bg-primary/20 transition-colors"
+                            href="#">
+                            <span class="material-symbols-outlined text-primary"
+                                style="font-variation-settings: 'FILL' 1;">payments</span>
+                            <p class="text-primary text-sm font-bold leading-normal">Financials</p>
+                        </a>
+                        <a class="flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-background-light dark:hover:bg-gray-800 transition-colors group"
+                            href="#">
+                            <span
+                                class="material-symbols-outlined text-[#617589] group-hover:text-[#111418] dark:text-gray-400 dark:group-hover:text-white">bar_chart</span>
+                            <p class="text-[#111418] dark:text-white text-sm font-medium leading-normal">Reports</p>
+                        </a>
+                    </div>
+                </div>
+                <!-- Bottom Profile -->
+                <div class="flex items-center gap-3 px-2 py-2 mt-auto border-t border-[#dbe0e6] pt-4">
+                    <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-8"
+                        data-alt="User profile picture"
+                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAODnVtPVLmueO5oOJazwSbR0yc_vgj5EuYpbJO7XNzDZybmin0OJ50DdhoUGJTsg_nNtGV3jU4vGS8v2L8SF9iDRIZNWT8YFlyQq165_WXlwVOpG4EZ8a4M3NEdmdne9LovntQv4oSwrCTeKGwsg1KVtRXmw3-lJdz-k3Xy67BtFgEM1gXps6gP170KdOcQ5Ct8PcdMbe1zlwkJDVzZKRmxK7t2UHAXX1WmQCJ-CtxKhhYVUyXK9-03U9tMh6CTveJ6jG_Zw52brrE");'>
+                    </div>
+                    <div class="flex flex-col">
+                        <p class="text-[#111418] dark:text-white text-sm font-medium leading-tight">Omar Hassan</p>
+                        <p class="text-[#617589] text-xs font-normal leading-normal">Prop. Manager</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        <!-- Main Content -->
+        <main class="flex-1 flex flex-col h-full overflow-hidden bg-background-light dark:bg-background-dark">
+            <div class="flex-1 overflow-y-auto">
+                <div class="container mx-auto px-8 py-8 max-w-[1440px]">
+                    <!-- Header Section -->
+                    <div class="flex flex-wrap items-end justify-between gap-4 mb-8">
+                        <div class="flex flex-col gap-1">
+                            <h1
+                                class="text-[#111418] dark:text-white text-3xl font-black leading-tight tracking-[-0.033em]">
+                                Financials Overview</h1>
+                            <p class="text-[#617589] text-base font-normal leading-normal">Track income, expenses, and
+                                rent collection across your portfolio.</p>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <!-- Date Range Picker -->
+                            <div class="relative group">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <span class="material-symbols-outlined text-[#617589] text-sm">calendar_month</span>
+                                </div>
+                                <select
+                                    class="h-10 pl-9 pr-8 bg-white dark:bg-[#1a2632] border border-[#dbe0e6] dark:border-gray-700 text-[#111418] dark:text-white text-sm font-medium rounded-lg focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer appearance-none">
+                                    <option>This Month (Oct 2023)</option>
+                                    <option>Last Month (Sep 2023)</option>
+                                    <option>Q3 2023</option>
+                                    <option>Year to Date</option>
+                                </select>
+                                <div class="absolute inset-y-0 right-0 pr-2 flex items-center pointer-events-none">
+                                    <span class="material-symbols-outlined text-[#617589] text-sm">expand_more</span>
+                                </div>
+                            </div>
+                            <!-- Export Button -->
+                            <button
+                                class="flex items-center gap-2 h-10 px-4 bg-primary hover:bg-blue-600 text-white text-sm font-bold rounded-lg transition-colors shadow-sm">
+                                <span class="material-symbols-outlined text-[20px]">download</span>
+                                <span>Export CSV</span>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Stats Cards -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                        <!-- Total Income -->
+                        <div
+                            class="bg-white dark:bg-[#1a2632] rounded-xl p-5 border border-[#dbe0e6] dark:border-gray-700 shadow-sm">
+                            <div class="flex justify-between items-start mb-2">
+                                <p class="text-[#617589] text-sm font-medium">Total Income</p>
+                                <div class="bg-green-100 dark:bg-green-900/30 p-1.5 rounded-full">
+                                    <span
+                                        class="material-symbols-outlined text-green-600 dark:text-green-400 text-sm">trending_up</span>
+                                </div>
+                            </div>
+                            <p class="text-[#111418] dark:text-white text-2xl font-bold tracking-tight mb-1">AED 450,000
+                            </p>
+                            <p class="text-green-600 dark:text-green-400 text-xs font-bold flex items-center gap-1">
+                                <span class="material-symbols-outlined text-xs">arrow_upward</span>
+                                12% <span class="text-[#617589] font-normal">vs last month</span>
+                            </p>
+                        </div>
+                        <!-- Total Expenses -->
+                        <div
+                            class="bg-white dark:bg-[#1a2632] rounded-xl p-5 border border-[#dbe0e6] dark:border-gray-700 shadow-sm">
+                            <div class="flex justify-between items-start mb-2">
+                                <p class="text-[#617589] text-sm font-medium">Total Expenses</p>
+                                <div class="bg-red-100 dark:bg-red-900/30 p-1.5 rounded-full">
+                                    <span
+                                        class="material-symbols-outlined text-red-600 dark:text-red-400 text-sm">trending_down</span>
+                                </div>
+                            </div>
+                            <p class="text-[#111418] dark:text-white text-2xl font-bold tracking-tight mb-1">AED 12,000
+                            </p>
+                            <p class="text-red-600 dark:text-red-400 text-xs font-bold flex items-center gap-1">
+                                <span class="material-symbols-outlined text-xs">arrow_upward</span>
+                                2% <span class="text-[#617589] font-normal">vs last month</span>
+                            </p>
+                        </div>
+                        <!-- Net Profit -->
+                        <div
+                            class="bg-white dark:bg-[#1a2632] rounded-xl p-5 border border-[#dbe0e6] dark:border-gray-700 shadow-sm">
+                            <div class="flex justify-between items-start mb-2">
+                                <p class="text-[#617589] text-sm font-medium">Net Profit</p>
+                                <div class="bg-blue-100 dark:bg-blue-900/30 p-1.5 rounded-full">
+                                    <span
+                                        class="material-symbols-outlined text-primary text-sm">account_balance_wallet</span>
+                                </div>
+                            </div>
+                            <p class="text-[#111418] dark:text-white text-2xl font-bold tracking-tight mb-1">AED 438,000
+                            </p>
+                            <p class="text-green-600 dark:text-green-400 text-xs font-bold flex items-center gap-1">
+                                <span class="material-symbols-outlined text-xs">arrow_upward</span>
+                                10% <span class="text-[#617589] font-normal">margin</span>
+                            </p>
+                        </div>
+                        <!-- Rent Collection -->
+                        <div
+                            class="bg-white dark:bg-[#1a2632] rounded-xl p-5 border border-[#dbe0e6] dark:border-gray-700 shadow-sm">
+                            <div class="flex justify-between items-start mb-2">
+                                <p class="text-[#617589] text-sm font-medium">Rent Collection</p>
+                                <div class="bg-orange-100 dark:bg-orange-900/30 p-1.5 rounded-full">
+                                    <span
+                                        class="material-symbols-outlined text-orange-600 dark:text-orange-400 text-sm">donut_large</span>
+                                </div>
+                            </div>
+                            <p class="text-[#111418] dark:text-white text-2xl font-bold tracking-tight mb-1">88%</p>
+                            <div class="w-full bg-gray-200 rounded-full h-1.5 mt-2 dark:bg-gray-700">
+                                <div class="bg-orange-500 h-1.5 rounded-full" style="width: 88%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Main Table Section -->
+                    <div
+                        class="bg-white dark:bg-[#1a2632] rounded-xl border border-[#dbe0e6] dark:border-gray-700 shadow-sm overflow-hidden flex flex-col">
+                        <!-- Tabs -->
+                        <div class="border-b border-[#dbe0e6] dark:border-gray-700 px-6">
+                            <nav aria-label="Tabs" class="flex gap-6">
+                                <a class="border-b-[3px] border-primary text-[#111418] dark:text-white py-4 text-sm font-bold"
+                                    href="#">All Transactions</a>
+                                <a class="border-b-[3px] border-transparent text-[#617589] hover:text-[#111418] dark:hover:text-white py-4 text-sm font-medium transition-colors"
+                                    href="#">Income</a>
+                                <a class="border-b-[3px] border-transparent text-[#617589] hover:text-[#111418] dark:hover:text-white py-4 text-sm font-medium transition-colors"
+                                    href="#">Expenses</a>
+                                <a class="border-b-[3px] border-transparent text-[#617589] hover:text-[#111418] dark:hover:text-white py-4 text-sm font-medium transition-colors"
+                                    href="#">Pending Payments</a>
+                            </nav>
+                        </div>
+                        <!-- Filters & Search (Optional Toolbar) -->
+                        <div class="p-4 flex items-center justify-between gap-4">
+                            <div class="relative w-full max-w-sm">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <span class="material-symbols-outlined text-[#617589] text-lg">search</span>
+                                </div>
+                                <input
+                                    class="pl-10 pr-4 py-2 w-full border border-[#dbe0e6] dark:border-gray-600 rounded-lg text-sm bg-white dark:bg-[#111418] text-[#111418] dark:text-white focus:ring-1 focus:ring-primary focus:border-primary outline-none"
+                                    placeholder="Search by property, tenant, or invoice #..." type="text" />
+                            </div>
+                            <button
+                                class="flex items-center gap-2 text-[#617589] hover:text-[#111418] dark:hover:text-white text-sm font-medium px-3 py-2 rounded-lg border border-transparent hover:border-[#dbe0e6] transition-all">
+                                <span class="material-symbols-outlined text-[20px]">filter_list</span>
+                                Filter
+                            </button>
+                        </div>
+                        <!-- Table -->
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left border-collapse">
+                                <thead
+                                    class="bg-[#f9fafb] dark:bg-[#111418] border-b border-[#dbe0e6] dark:border-gray-700">
+                                    <tr>
+                                        <th
+                                            class="py-3 px-6 text-xs font-semibold uppercase tracking-wider text-[#617589]">
+                                            Date</th>
+                                        <th
+                                            class="py-3 px-6 text-xs font-semibold uppercase tracking-wider text-[#617589]">
+                                            Property / Unit</th>
+                                        <th
+                                            class="py-3 px-6 text-xs font-semibold uppercase tracking-wider text-[#617589]">
+                                            Transaction Type</th>
+                                        <th
+                                            class="py-3 px-6 text-xs font-semibold uppercase tracking-wider text-[#617589]">
+                                            Payer / Payee</th>
+                                        <th
+                                            class="py-3 px-6 text-xs font-semibold uppercase tracking-wider text-[#617589] text-right">
+                                            Amount (AED)</th>
+                                        <th
+                                            class="py-3 px-6 text-xs font-semibold uppercase tracking-wider text-[#617589]">
+                                            Status</th>
+                                        <th
+                                            class="py-3 px-6 text-xs font-semibold uppercase tracking-wider text-[#617589] text-center">
+                                            Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-[#dbe0e6] dark:divide-gray-700">
+                                    <!-- Row 1 -->
+                                    <tr class="hover:bg-[#f6f7f8] dark:hover:bg-gray-800/50 transition-colors">
+                                        <td
+                                            class="py-4 px-6 text-sm text-[#111418] dark:text-white font-medium whitespace-nowrap">
+                                            Oct 24, 2023</td>
+                                        <td class="py-4 px-6 text-sm text-[#111418] dark:text-white">
+                                            <div class="flex flex-col">
+                                                <span class="font-medium">Marina Gate</span>
+                                                <span class="text-[#617589] text-xs">Unit 402</span>
+                                            </div>
+                                        </td>
+                                        <td class="py-4 px-6 text-sm text-[#617589]">Rent Payment</td>
+                                        <td class="py-4 px-6 text-sm text-[#111418] dark:text-white">Ahmed Al-Mansoor
+                                        </td>
+                                        <td
+                                            class="py-4 px-6 text-sm text-right font-bold text-green-600 dark:text-green-400">
+                                            + 120,000</td>
+                                        <td class="py-4 px-6 text-sm">
+                                            <span
+                                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300">
+                                                Paid
+                                            </span>
+                                        </td>
+                                        <td class="py-4 px-6 text-center">
+                                            <button
+                                                class="text-[#617589] hover:text-[#111418] dark:hover:text-white p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                                                <span class="material-symbols-outlined text-[20px]">more_vert</span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <!-- Row 2 -->
+                                    <tr class="hover:bg-[#f6f7f8] dark:hover:bg-gray-800/50 transition-colors">
+                                        <td
+                                            class="py-4 px-6 text-sm text-[#111418] dark:text-white font-medium whitespace-nowrap">
+                                            Oct 22, 2023</td>
+                                        <td class="py-4 px-6 text-sm text-[#111418] dark:text-white">
+                                            <div class="flex flex-col">
+                                                <span class="font-medium">Downtown Views</span>
+                                                <span class="text-[#617589] text-xs">Unit 11</span>
+                                            </div>
+                                        </td>
+                                        <td class="py-4 px-6 text-sm text-[#617589]">Maintenance (AC)</td>
+                                        <td class="py-4 px-6 text-sm text-[#111418] dark:text-white">FixIt Services LLC
+                                        </td>
+                                        <td
+                                            class="py-4 px-6 text-sm text-right font-bold text-[#111418] dark:text-white">
+                                            - 450</td>
+                                        <td class="py-4 px-6 text-sm">
+                                            <span
+                                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300">
+                                                Pending
+                                            </span>
+                                        </td>
+                                        <td class="py-4 px-6 text-center">
+                                            <button
+                                                class="text-[#617589] hover:text-[#111418] dark:hover:text-white p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                                                <span class="material-symbols-outlined text-[20px]">more_vert</span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <!-- Row 3 -->
+                                    <tr class="hover:bg-[#f6f7f8] dark:hover:bg-gray-800/50 transition-colors">
+                                        <td
+                                            class="py-4 px-6 text-sm text-[#111418] dark:text-white font-medium whitespace-nowrap">
+                                            Oct 20, 2023</td>
+                                        <td class="py-4 px-6 text-sm text-[#111418] dark:text-white">
+                                            <div class="flex flex-col">
+                                                <span class="font-medium">Jumeirah Living</span>
+                                                <span class="text-[#617589] text-xs">Villa 105</span>
+                                            </div>
+                                        </td>
+                                        <td class="py-4 px-6 text-sm text-[#617589]">Security Deposit</td>
+                                        <td class="py-4 px-6 text-sm text-[#111418] dark:text-white">Sarah Jenkins</td>
+                                        <td
+                                            class="py-4 px-6 text-sm text-right font-bold text-green-600 dark:text-green-400">
+                                            + 15,000</td>
+                                        <td class="py-4 px-6 text-sm">
+                                            <span
+                                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300">
+                                                Paid
+                                            </span>
+                                        </td>
+                                        <td class="py-4 px-6 text-center">
+                                            <button
+                                                class="text-[#617589] hover:text-[#111418] dark:hover:text-white p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                                                <span class="material-symbols-outlined text-[20px]">more_vert</span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <!-- Row 4 -->
+                                    <tr class="hover:bg-[#f6f7f8] dark:hover:bg-gray-800/50 transition-colors">
+                                        <td
+                                            class="py-4 px-6 text-sm text-[#111418] dark:text-white font-medium whitespace-nowrap">
+                                            Oct 18, 2023</td>
+                                        <td class="py-4 px-6 text-sm text-[#111418] dark:text-white">
+                                            <div class="flex flex-col">
+                                                <span class="font-medium">Palm Tower</span>
+                                                <span class="text-[#617589] text-xs">Unit 3302</span>
+                                            </div>
+                                        </td>
+                                        <td class="py-4 px-6 text-sm text-[#617589]">Rent Payment</td>
+                                        <td class="py-4 px-6 text-sm text-[#111418] dark:text-white">Khalid Ibrahim</td>
+                                        <td
+                                            class="py-4 px-6 text-sm text-right font-bold text-green-600 dark:text-green-400">
+                                            + 95,000</td>
+                                        <td class="py-4 px-6 text-sm">
+                                            <span
+                                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300">
+                                                Overdue
+                                            </span>
+                                        </td>
+                                        <td class="py-4 px-6 text-center">
+                                            <button
+                                                class="text-[#617589] hover:text-[#111418] dark:hover:text-white p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                                                <span class="material-symbols-outlined text-[20px]">more_vert</span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <!-- Row 5 -->
+                                    <tr class="hover:bg-[#f6f7f8] dark:hover:bg-gray-800/50 transition-colors">
+                                        <td
+                                            class="py-4 px-6 text-sm text-[#111418] dark:text-white font-medium whitespace-nowrap">
+                                            Oct 15, 2023</td>
+                                        <td class="py-4 px-6 text-sm text-[#111418] dark:text-white">
+                                            <div class="flex flex-col">
+                                                <span class="font-medium">Marina Gate</span>
+                                                <span class="text-[#617589] text-xs">Common Area</span>
+                                            </div>
+                                        </td>
+                                        <td class="py-4 px-6 text-sm text-[#617589]">Plumbing Repair</td>
+                                        <td class="py-4 px-6 text-sm text-[#111418] dark:text-white">Rapid Fix Plumbing
+                                        </td>
+                                        <td
+                                            class="py-4 px-6 text-sm text-right font-bold text-[#111418] dark:text-white">
+                                            - 850</td>
+                                        <td class="py-4 px-6 text-sm">
+                                            <span
+                                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300">
+                                                Paid
+                                            </span>
+                                        </td>
+                                        <td class="py-4 px-6 text-center">
+                                            <button
+                                                class="text-[#617589] hover:text-[#111418] dark:hover:text-white p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                                                <span class="material-symbols-outlined text-[20px]">more_vert</span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- Pagination -->
+                        <div
+                            class="px-6 py-4 border-t border-[#dbe0e6] dark:border-gray-700 flex items-center justify-between">
+                            <p class="text-sm text-[#617589]">Showing <span
+                                    class="font-medium text-[#111418] dark:text-white">1</span> to <span
+                                    class="font-medium text-[#111418] dark:text-white">5</span> of <span
+                                    class="font-medium text-[#111418] dark:text-white">42</span> results</p>
+                            <div class="flex gap-2">
+                                <button
+                                    class="px-3 py-1.5 rounded-lg border border-[#dbe0e6] dark:border-gray-600 text-sm font-medium text-[#617589] bg-white dark:bg-[#111418] hover:bg-gray-50 dark:hover:bg-gray-800 disabled:opacity-50">Previous</button>
+                                <button
+                                    class="px-3 py-1.5 rounded-lg border border-[#dbe0e6] dark:border-gray-600 text-sm font-medium text-[#111418] dark:text-white bg-white dark:bg-[#111418] hover:bg-gray-50 dark:hover:bg-gray-800">Next</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>
